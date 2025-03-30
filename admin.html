@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Clustered by Lee</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gold: #D4AF37;
+            --section-bg: #111111;
+            --input-bg: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 5% 50px;
+        }
+
+        .admin-nav {
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            border-bottom: 1px solid var(--gold);
+        }
+
+        .admin-title {
+            font-size: 1.8rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .admin-section {
+            background: var(--section-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .section-heading {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-input {
+            background: var(--input-bg);
+            border: 1px solid #333;
+            color: var(--white);
+            padding: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: var(--gold);
+            outline: none;
+        }
+
+        .image-preview {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--gold);
+        }
+
+        .preview-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .product-list {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .product-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--input-bg);
+            border-radius: 8px;
+        }
+
+        .product-thumb {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .admin-button {
+            background: var(--gold);
+            color: var(--black);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .admin-button:hover {
+            transform: scale(1.05);
+        }
+
+        .delete-btn {
+            background: #ff4444;
+            color: white;
+            margin-left: auto;
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .promo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="admin-nav">
+        <div class="admin-title">Clustered by Lee Admin</div>
+    </nav>
+
+    <div class="admin-container">
+        <!-- Logo Management -->
+        <section class="admin-section">
+            <h2 class="section-heading">Logo Settings</h2>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>Upload New Logo:</label>
+                    <input type="file" id="logoInput" class="form-input" accept="image/*">
+                </div>
+                <div class="preview-container">
+                    <img src="#" class="image-preview" id="logoPreview" style="display: none;">
+                </div>
+                <button class="admin-button" onclick="saveLogo()">Save Logo</button>
+            </div>
+        </section>
+
+        <!-- Product Management -->
+        <section class="admin-section">
+            <h2 class="section-heading">Product Catalog</h2>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>Product Name:</label>
+                    <input type="text" id="productName" class="form-input">
+                </div>
+                <div class="input-group">
+                    <label>Price:</label>
+                    <input type="number" id="productPrice" class="form-input">
+                </div>
+                <div class="input-group">
+                    <label>Product Image:</label>
+                    <input type="file" id="productImage" class="form-input" accept="image/*">
+                </div>
+                <button class="admin-button" onclick="addProduct()">Add Product</button>
+            </div>
+            
+            <div class="product-list" id="productList"></div>
+        </section>
+
+        <!-- Promotional Images -->
+        <section class="admin-section">
+            <h2 class="section-heading">Promotional Images</h2>
+            <div class="promo-grid">
+                <div class="input-group">
+                    <label>Image 1:</label>
+                    <input type="file" class="promo-upload" data-id="1" accept="image/*">
+                    <img src="#" class="image-preview" id="promo1Preview">
+                </div>
+                <div class="input-group">
+                    <label>Image 2:</label>
+                    <input type="file" class="promo-upload" data-id="2" accept="image/*">
+                    <img src="#" class="image-preview" id="promo2Preview">
+                </div>
+                <div class="input-group">
+                    <label>Image 3:</label>
+                    <input type="file" class="promo-upload" data-id="3" accept="image/*">
+                    <img src="#" class="image-preview" id="promo3Preview">
+                </div>
+            </div>
+            <button class="admin-button" onclick="savePromoImages()" style="margin-top: 1.5rem;">Save Promo Images</button>
+        </section>
+    </div>
+
+    <script>
+        // Logo Management
+        document.getElementById('logoInput').addEventListener('change', function(e) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('logoPreview').src = e.target.result;
+                document.getElementById('logoPreview').style.display = 'block';
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        });
+
+        function saveLogo() {
+            const logo = document.getElementById('logoPreview').src;
+            localStorage.setItem('siteLogo', logo);
+            alert('Logo updated successfully!');
+        }
+
+        // Product Management
+        let products = JSON.parse(localStorage.getItem('products')) || [];
+
+        function addProduct() {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const newProduct = {
+                    name: document.getElementById('productName').value,
+                    price: document.getElementById('productPrice').value,
+                    image: e.target.result
+                };
+
+                products.push(newProduct);
+                localStorage.setItem('products', JSON.stringify(products));
+                refreshProductList();
+                clearProductForm();
+            }
+            reader.readAsDataURL(document.getElementById('productImage').files[0]);
+        }
+
+        function deleteProduct(index) {
+            if (confirm('Delete this product permanently?')) {
+                products.splice(index, 1);
+                localStorage.setItem('products', JSON.stringify(products));
+                refreshProductList();
+            }
+        }
+
+        function refreshProductList() {
+            const productList = document.getElementById('productList');
+            productList.innerHTML = products.map((product, index) => `
+                <div class="product-item">
+                    <img src="${product.image}" class="product-thumb">
+                    <div>
+                        <h3>${product.name}</h3>
+                        <p>ZAR ${product.price}</p>
+                    </div>
+                    <button class="admin-button delete-btn" onclick="deleteProduct(${index})">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        function clearProductForm() {
+            document.getElementById('productName').value = '';
+            document.getElementById('productPrice').value = '';
+            document.getElementById('productImage').value = '';
+        }
+
+        // Promotional Images
+        document.querySelectorAll('.promo-upload').forEach(input => {
+            input.addEventListener('change', function(e) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const promoId = input.getAttribute('data-id');
+                    document.getElementById(`promo${promoId}Preview`).src = e.target.result;
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            });
+        });
+
+        function savePromoImages() {
+            const promoImages = [];
+            for (let i = 1; i <= 3; i++) {
+                const promoImage = document.getElementById(`promo${i}Preview`).src;
+                if (promoImage) {
+                    promoImages.push(promoImage);
+                }
+            }
+            localStorage.setItem('promoImages', JSON.stringify(promoImages));
+            alert('Promo images updated successfully!');
+        }
+
+        window.onload = function() {
+            const savedLogo = localStorage.getItem('siteLogo');
+            if (savedLogo) {
+                document.getElementById('logoPreview').src = savedLogo;
+                document.getElementById('logoPreview').style.display = 'block';
+            }
+            refreshProductList();
+        };
+    </script>
+</body>
+</html>
