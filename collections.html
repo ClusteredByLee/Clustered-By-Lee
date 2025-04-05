@@ -1,205 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Collections | Clustered by Lee</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --black: #000000;
-            --white: #ffffff;
-            --gold: #D4AF37;
-            --spacing-md: 2rem;
-            --spacing-xl: 4rem;
-            --section-bg: #111111;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Collections | Clustered by Lee</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gold: #D4AF37;
+      --spacing-md: 2rem;
+      --spacing-xl: 4rem;
+      --section-bg: #111111;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Helvetica Neue', sans-serif;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
 
-        body {
-            background: var(--black);
-            color: var(--white);
-            line-height: 1.6;
-        }
+    body {
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+    }
 
-        .hero {
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                        url('https://images.unsplash.com/photo-1601933470096-0e34634effc6') center/cover;
-        }
+    .hero {
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                  url('https://images.unsplash.com/photo-1601933470096-0e34634effc6') center/cover;
+    }
 
-        .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--gold);
+    }
 
-        .hero-content {
-            max-width: 900px;
-            color: var(--gold);
-        }
+    .collections-section {
+      padding: var(--spacing-xl) 5%;
+      background: var(--section-bg);
+    }
 
-        .collections-section {
-            padding: var(--spacing-xl) 5%;
-            background: var(--section-bg);
-        }
+    .section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: var(--spacing-md);
+      color: var(--gold);
+    }
 
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: var(--spacing-md);
-            color: var(--gold);
-        }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    .product-card {
+      background: var(--black);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+      border: 1px solid var(--gold);
+    }
 
-        .product-card {
-            background: var(--black);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+    .product-card:hover {
+      transform: translateY(-10px);
+    }
 
-        .product-card:hover {
-            transform: translateY(-10px);
-        }
+    .product-image {
+      height: 350px;
+      background-size: cover;
+      background-position: center;
+    }
 
-        .product-image {
-            height: 350px;
-            background-size: cover;
-            background-position: center;
-        }
+    .product-info {
+      padding: 1.5rem;
+      text-align: center;
+    }
 
-        .product-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
+    .product-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 1rem 0;
+      color: var(--white);
+    }
 
-        .product-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 1rem 0;
-            color: var(--white);
-        }
+    .product-price {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
 
-        .product-price {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--gold);
-        }
+    .add-to-cart-btn, .checkout-btn {
+      background-color: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+    }
 
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2rem;
-            }
+    .add-to-cart-btn:hover, .checkout-btn:hover {
+      background-color: #b7972e;
+    }
 
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
+    .checkout-container {
+      text-align: center;
+      margin-top: 2rem;
+    }
 
-            .product-image {
-                height: 300px;
-            }
-        }
-    </style>
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 300px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Explore Our Collections</h1>
-        </div>
-    </section>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Explore Our Collections</h1>
+    </div>
+  </section>
 
-    <!-- Collections Section -->
-    <section class="collections-section">
-        <h2 class="section-title">Lash Set Collections</h2>
-        <div class="products-grid" id="productGrid">
-            <!-- Product cards will be dynamically inserted here -->
-        </div>
-    </section>
+  <section class="collections-section">
+    <h2 class="section-title">Lash Set Collections</h2>
+    <div class="products-grid" id="productGrid">
+      <!-- Products will load here -->
+    </div>
+    <div class="checkout-container" id="checkoutContainer" style="display:none;">
+      <button class="checkout-btn" onclick="checkout()">Checkout</button>
+    </div>
+  </section>
 
-    <!-- Product Data and Display Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const products = [
-                {
-                    name: "Single Cluster Lashes",
-                    image: "R70.jpg",
-                    price: "R70"
-                },
-                {
-                    name: "Single by 2 Cluster Lashes",
-                    image: "R140.jpg",
-                    price: "R140"
-                },
-                {
-                    name: "Cluster lashes (3 different sizes), Eyelash brush, makeup brush, miniature smudge brush",
-                    image: "R150.jpg",
-                    price: "R150"
-                },
-                {
-                    name: "Cluster lashes (3 different sizes), Eyelash brush, makeup brush, miniature smudge brush, Tweezers",
-                    image: "R200.jpg",
-                    price: "R200"
-                },
-                {
-                    name: "Cluster lashes (3 different sizes), Eyelash brush, eye pads, makeup brush, miniature smudge brush, Tweezers, 3 glue rings",
-                    image: "R250.jpg",
-                    price: "R250"
-                },
-                {
-                    name: "Cluster lashes (9 to 15 or 8 to 16), Eyelash brush, makeup brush, miniature smudge brush",
-                    image: "R280.jpg",
-                    price: "R280"
-                },
-                {
-                    name: "Cluster lashes (9 to 15 or 8 to 16), Eyelash brush, makeup brush, miniature smudge brush, tweezers",
-                    image: "R300.jpg",
-                    price: "R300"
-                }
-            ];
+  <script>
+    const products = [
+      { name: "Single Cluster Lashes", image: "R70.jpg", price: "R70" },
+      { name: "Single By 2 Cluster Lashes", image: "R140.jpg", price: "R140" },
+      { name: "Cluster Lashes (3 Different Sizes), Eyelash Brush, Makeup Brush, Miniature Smudge Brush", image: "R150.jpg", price: "R150" },
+      { name: "Cluster Lashes (3 Different Sizes), Eyelash Brush, Makeup Brush, Miniature Smudge Brush, Tweezers", image: "R200.jpg", price: "R200" },
+      { name: "Cluster Lashes (3 Different Sizes), Eyelash Brush, Eye Pads, Makeup Brush, Miniature Smudge Brush, Tweezers, 3 Glue Rings", image: "R250.jpg", price: "R250" },
+      { name: "Cluster Lashes (9 To 15 Or 8 To 16), Eyelash Brush, Makeup Brush, Miniature Smudge Brush", image: "R280.jpg", price: "R280" },
+      { name: "Cluster Lashes (9 To 15 Or 8 To 16), Eyelash Brush, Makeup Brush, Miniature Smudge Brush, Tweezers", image: "R300.jpg", price: "R300" }
+    ];
 
-            const productGrid = document.getElementById('productGrid');
+    const cart = [];
 
-            function renderProducts() {
-                productGrid.innerHTML = '';
-                products.forEach(product => {
-                    const productCard = document.createElement('div');
-                    productCard.classList.add('product-card');
+    const productGrid = document.getElementById('productGrid');
+    const checkoutContainer = document.getElementById('checkoutContainer');
 
-                    productCard.innerHTML = `
-                        <div class="product-image" style="background-image: url('${product.image}')"></div>
-                        <div class="product-info">
-                            <h3 class="product-name">${product.name}</h3>
-                            <p class="product-price">${product.price}</p>
-                        </div>
-                    `;
+    function renderProducts() {
+      products.forEach((product, index) => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
 
-                    productGrid.appendChild(productCard);
-                });
-            }
+        card.innerHTML = `
+          <div class="product-image" style="background-image: url('${product.image}')"></div>
+          <div class="product-info">
+            <h3 class="product-name">${product.name}</h3>
+            <p class="product-price">${product.price}</p>
+            <button class="add-to-cart-btn" onclick="addToCart(${index})">Add to Cart</button>
+          </div>
+        `;
+        productGrid.appendChild(card);
+      });
+    }
 
-            renderProducts();
-        });
-    </script>
+    function addToCart(index) {
+      cart.push(products[index]);
+      checkoutContainer.style.display = 'block';
+    }
+
+    function checkout() {
+      if (cart.length === 0) return;
+
+      const cartItems = cart.map(p => `• ${p.name} - ${p.price}`).join('%0A');
+      const message = `Hi, I'm interested in the following items:%0A${cartItems}`;
+      const whatsappUrl = `https://wa.me/27660907961?text=${message}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    document.addEventListener('DOMContentLoaded', renderProducts);
+  </script>
 </body>
 </html>
