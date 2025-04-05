@@ -122,6 +122,25 @@
       margin-top: 2rem;
     }
 
+    #selectedItems {
+      margin: 1rem auto;
+      max-width: 600px;
+      background: #222;
+      padding: 1rem;
+      border-radius: 10px;
+      color: var(--gold);
+    }
+
+    .flash {
+      animation: flash 0.6s ease-in-out;
+    }
+
+    @keyframes flash {
+      0% { transform: scale(1); background-color: var(--gold); color: var(--black); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); background-color: var(--black); color: var(--white); }
+    }
+
     @media (max-width: 768px) {
       .hero-content h1 {
         font-size: 2rem;
@@ -146,10 +165,9 @@
 
   <section class="collections-section">
     <h2 class="section-title">Lash Set Collections</h2>
-    <div class="products-grid" id="productGrid">
-      <!-- Products will load here -->
-    </div>
+    <div class="products-grid" id="productGrid"></div>
     <div class="checkout-container" id="checkoutContainer" style="display:none;">
+      <div id="selectedItems"></div>
       <button class="checkout-btn" onclick="checkout()">Checkout</button>
     </div>
   </section>
@@ -167,10 +185,8 @@
 
     const cart = [];
 
-    const productGrid = document.getElementById('productGrid');
-    const checkoutContainer = document.getElementById('checkoutContainer');
-
     function renderProducts() {
+      const grid = document.getElementById('productGrid');
       products.forEach((product, index) => {
         const card = document.createElement('div');
         card.className = 'product-card';
@@ -180,24 +196,34 @@
           <div class="product-info">
             <h3 class="product-name">${product.name}</h3>
             <p class="product-price">${product.price}</p>
-            <button class="add-to-cart-btn" onclick="addToCart(${index})">Add to Cart</button>
+            <button class="add-to-cart-btn" onclick="addToCart(${index}, this)">Add to Cart</button>
           </div>
         `;
-        productGrid.appendChild(card);
+        grid.appendChild(card);
       });
     }
 
-    function addToCart(index) {
+    function addToCart(index, btn) {
       cart.push(products[index]);
+      btn.classList.add('flash');
+      setTimeout(() => btn.classList.remove('flash'), 600);
+      updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+      const selectedItems = document.getElementById('selectedItems');
+      const checkoutContainer = document.getElementById('checkoutContainer');
       checkoutContainer.style.display = 'block';
+      selectedItems.innerHTML = '<h3>Selected Items:</h3><ul>' +
+        cart.map(item => `<li>• ${item.name} - ${item.price}</li>`).join('') +
+        '</ul>';
     }
 
     function checkout() {
       if (cart.length === 0) return;
-
       const cartItems = cart.map(p => `• ${p.name} - ${p.price}`).join('%0A');
       const message = `Hi, I'm interested in the following items:%0A${cartItems}`;
-      const whatsappUrl = `https://wa.me/27660907961?text=${message}`;
+      const whatsappUrl = `https://wa.me/YOURNUMBER?text=${message}`;
       window.open(whatsappUrl, '_blank');
     }
 
