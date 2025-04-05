@@ -1,43 +1,317 @@
-<script>
-    // Load Dynamic Content
-    document.addEventListener('DOMContentLoaded', () => {
-        // Load Logo
-        const logo = localStorage.getItem('siteLogo');
-        const logoContainer = document.getElementById('logoContainer');
-        logoContainer.innerHTML = logo 
-            ? `<img src="${logo}" alt="Logo" class="nav-logo">`
-            : '<span class="text-logo">Clustered by Lee</span>';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustered by Lee | Luxury Lash Enhancements</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <header>
+        <img id="siteLogo" src="" alt="">
+    </header>
 
-        // Featured Products Section (Prices removed, image URLs added)
-        const featuredGrid = document.getElementById('featuredGrid');
-        const featuredProducts = [
-            { title: 'Luxe Set', image: 'https://example.com/images/luxe-set.jpg' },
-            { title: 'Volume Set', image: 'https://example.com/images/volume-set.jpg' },
-            { title: 'Classic Set', image: 'https://example.com/images/classic-set.jpg' }
-        ];
-        featuredGrid.innerHTML = featuredProducts.map(product => `
-            <div class="product-card">
-                <div class="product-image" style="background-image: url('${product.image}')"></div>
-                <div class="product-info">
-                    <h3>${product.title}</h3>
+    <script>
+        const savedLogo = localStorage.getItem("logo");
+        if (savedLogo) {
+            document.getElementById("siteLogo").src = savedLogo;
+        }
+    </script>
+
+    <style>
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gold: #D4AF37;
+            --spacing-md: 2rem;
+            --spacing-xl: 4rem;
+            --section-bg: #111111;
+        }
+
+        .promo-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .promo-container img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-logo {
+            max-width: 150px;
+            transition: transform 0.3s;
+        }
+
+        .text-logo {
+            font-size: 1.8rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                        url('https://images.unsplash.com/photo-1601933470096-0e34634effc6') center/cover;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .cta-button {
+            background: var(--gold);
+            color: var(--black);
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .products-section {
+            padding: var(--spacing-xl) 5%;
+            background: var(--section-bg);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--black);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-image {
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .promo-section {
+            padding: var(--spacing-xl) 5%;
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .promo-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .promo-image:hover {
+            transform: scale(1.03);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .promo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .product-image {
+                height: 300px;
+            }
+
+            .promo-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div id="logoContainer"></div>
+        <div class="nav-links">
+            <a href="#featured" class="nav-link">Home</a>
+            <a href="collections.html" class="nav-link">Collections</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Precision Lash Architecture</h1>
+            <a href="collections.html" class="cta-button">Explore Collection</a>
+        </div>
+    </section>
+
+    <section class="products-section" id="featured">
+        <h2 class="section-title">Featured Designs</h2>
+        <div class="products-grid" id="featuredGrid"></div>
+    </section>
+
+    <section class="promo-section">
+        <h2>Our Promotions</h2>
+        <div class="promo-container">
+            <img id="promo1Display" src="R70.JPG" alt="Promo 1">
+            <img id="promo2Display" src="R140.JPG" alt="Promo 2">
+            <img id="promo3Display" src="R150.JPG" alt="Promo 3">
+        </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div class="overlay" id="overlay"></div>
+    <section class="contact-section" id="contactSection">
+        <button class="contact-close" onclick="closeContact()">&times;</button>
+        <h2>Connect With Us</h2>
+        <div class="social-buttons">
+            <a href="https://tiktok.com/@clusteredbylee" target="_blank" class="social-button tiktok-btn">
+                <i class="fab fa-tiktok"></i>
+                TikTok
+            </a>
+            <a href="https://wa.me/27660907961" target="_blank" class="social-button whatsapp-btn">
+                <i class="fab fa-whatsapp"></i>
+                WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const logo = localStorage.getItem('siteLogo');
+            const logoContainer = document.getElementById('logoContainer');
+            logoContainer.innerHTML = logo 
+                ? `<img src="${logo}" alt="Logo" class="nav-logo">`
+                : '<span class="text-logo">Clustered by Lee</span>';
+
+            const featuredGrid = document.getElementById('featuredGrid');
+            const featuredProducts = [
+                { title: 'Luxe Set', image: '1.jpg' },
+                { title: 'Volume Set', image: '2.jpg' },
+                { title: 'Classic Set', image: '3.jpg' }
+            ];
+            featuredGrid.innerHTML = featuredProducts.map(product => `
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('${product.image}')"></div>
+                    <div class="product-info">
+                        <h3>${product.title}</h3>
+                    </div>
                 </div>
-            </div>
-        `).join('');
+            `).join('');
+        });
 
-        // Promo images (Replace these URLs as needed)
-        document.getElementById("promo1Display").src = "https://example.com/images/promo1.jpg";
-        document.getElementById("promo2Display").src = "https://example.com/images/promo2.jpg";
-        document.getElementById("promo3Display").src = "https://example.com/images/promo3.jpg";
-    });
-
-    // Toggle Contact Modal
-    const openContact = () => {
-        document.getElementById('contactSection').classList.add('active');
-        document.getElementById('overlay').classList.add('active');
-    };
-
-    const closeContact = () => {
-        document.getElementById('contactSection').classList.remove('active');
-        document.getElementById('overlay').classList.remove('active');
-    };
-</script>
+        function closeContact() {
+            document.getElementById('contactSection').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
