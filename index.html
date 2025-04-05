@@ -1,194 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
+<script>
+    // Load Dynamic Content
+    document.addEventListener('DOMContentLoaded', () => {
+        // Load Logo
+        const logo = localStorage.getItem('siteLogo');
+        const logoContainer = document.getElementById('logoContainer');
+        logoContainer.innerHTML = logo 
+            ? `<img src="${logo}" alt="Logo" class="nav-logo">`
+            : '<span class="text-logo">Clustered by Lee</span>';
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clustered by Lee</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fff8f4;
-        }
-
-        nav {
-            background-color: #f8c8dc;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            height: 50px;
-        }
-
-        .text-logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #d63384;
-        }
-
-        .section-title {
-            text-align: center;
-            margin: 2rem 0 1rem;
-            font-size: 2rem;
-            color: #d63384;
-        }
-
-        .product-grid {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            padding: 0 2rem 2rem;
-        }
-
-        .product-card {
-            width: 200px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.2s;
-        }
-
-        .product-card:hover {
-            transform: scale(1.05);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .product-info {
-            padding: 0.75rem;
-            text-align: center;
-        }
-
-        .product-price {
-            color: #d63384;
-            font-weight: bold;
-        }
-
-        #contactSection {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: #fff;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            z-index: 100;
-            transition: 0.3s ease-in-out;
-        }
-
-        #contactSection.active {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 99;
-            display: none;
-        }
-
-        #overlay.active {
-            display: block;
-        }
-    </style>
-</head>
-
-<body>
-    <nav>
-        <div id="logoContainer"></div>
-        <button onclick="openContact()">Contact</button>
-    </nav>
-
-    <h2 class="section-title">Featured Designs</h2>
-    <div id="featuredGrid" class="product-grid"></div>
-
-    <h2 class="section-title">Our Promos</h2>
-    <div class="product-grid">
-        <img id="promo1Display" src="" width="200" height="200" style="border-radius: 10px; object-fit: cover;" />
-        <img id="promo2Display" src="" width="200" height="200" style="border-radius: 10px; object-fit: cover;" />
-        <img id="promo3Display" src="" width="200" height="200" style="border-radius: 10px; object-fit: cover;" />
-    </div>
-
-    <!-- Contact Modal -->
-    <div id="overlay"></div>
-    <div id="contactSection">
-        <h3>Contact Us</h3>
-        <p>WhatsApp: <a href="https://wa.me/yourNumber" target="_blank">Chat with us</a></p>
-        <button onclick="closeContact()">Close</button>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Load Logo
-            const logo = localStorage.getItem('siteLogo');
-            const logoContainer = document.getElementById('logoContainer');
-            logoContainer.innerHTML = logo
-                ? `<img src="${logo}" alt="Logo" class="nav-logo">`
-                : '<span class="text-logo">Clustered by Lee</span>';
-
-            // Featured Designs (Static)
-            const featuredGrid = document.getElementById('featuredGrid');
-            const featuredProducts = [
-                { title: 'Luxe Set', price: '$75', image: '1.jpg' },
-                { title: 'Volume Set', price: '$85', image: '2.jpg' },
-                { title: 'Classic Set', price: '$65', image: '3.jpg' }
-            ];
-
-            featuredGrid.innerHTML = featuredProducts.map(product => `
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url('${product.image}')"></div>
-                    <div class="product-info">
-                        <h3>${product.title}</h3>
-                        <p class="product-price">${product.price}</p>
-                    </div>
+        // Featured Products Section (Prices removed, image URLs added)
+        const featuredGrid = document.getElementById('featuredGrid');
+        const featuredProducts = [
+            { title: 'Luxe Set', image: 'https://example.com/images/luxe-set.jpg' },
+            { title: 'Volume Set', image: 'https://example.com/images/volume-set.jpg' },
+            { title: 'Classic Set', image: 'https://example.com/images/classic-set.jpg' }
+        ];
+        featuredGrid.innerHTML = featuredProducts.map(product => `
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('${product.image}')"></div>
+                <div class="product-info">
+                    <h3>${product.title}</h3>
                 </div>
-            `).join('');
+            </div>
+        `).join('');
 
-            // Promo Image Rotation
-            const promoImages = ['R70.JPG', 'R140.JPG', 'R150.JPG', 'R200.JPG', 'R280.JPG', 'R300.JPG'];
-            const promoElements = [
-                document.getElementById('promo1Display'),
-                document.getElementById('promo2Display'),
-                document.getElementById('promo3Display')
-            ];
+        // Promo images (Replace these URLs as needed)
+        document.getElementById("promo1Display").src = "https://example.com/images/promo1.jpg";
+        document.getElementById("promo2Display").src = "https://example.com/images/promo2.jpg";
+        document.getElementById("promo3Display").src = "https://example.com/images/promo3.jpg";
+    });
 
-            function rotatePromos() {
-                promoElements.forEach(img => {
-                    const randomImage = promoImages[Math.floor(Math.random() * promoImages.length)];
-                    img.src = randomImage;
-                });
-            }
+    // Toggle Contact Modal
+    const openContact = () => {
+        document.getElementById('contactSection').classList.add('active');
+        document.getElementById('overlay').classList.add('active');
+    };
 
-            rotatePromos();
-            setInterval(rotatePromos, 4000); // Every 4 seconds
-        });
-
-        function openContact() {
-            document.getElementById('contactSection').classList.add('active');
-            document.getElementById('overlay').classList.add('active');
-        }
-
-        function closeContact() {
-            document.getElementById('contactSection').classList.remove('active');
-            document.getElementById('overlay').classList.remove('active');
-        }
-    </script>
-</body>
-
-</html>
+    const closeContact = () => {
+        document.getElementById('contactSection').classList.remove('active');
+        document.getElementById('overlay').classList.remove('active');
+    };
+</script>
