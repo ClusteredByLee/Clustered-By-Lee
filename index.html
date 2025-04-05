@@ -5,15 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Clustered by Lee | Luxury Lash Enhancements</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <header>
-    <img id="siteLogo" src="" alt="">
+  <header style="display: flex; align-items: center;">
+    <img id="siteLogo" src="CL.JPG" alt="Logo" style="width: 40px; margin-right: 10px; transition: transform 0.3s ease;">
+    <span class="text-logo" style="font-size: 1.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px;">Clustered by Lee</span>
   </header>
 
   <script>
-    const savedLogo = localStorage.getItem("logo");
-    if (savedLogo) {
-      document.getElementById("siteLogo").src = savedLogo;
-    }
+    // Hover effect for the logo
+    const logo = document.getElementById("siteLogo");
+    logo.addEventListener("mouseenter", () => {
+      logo.style.transform = "scale(1.1)";
+    });
+    logo.addEventListener("mouseleave", () => {
+      logo.style.transform = "scale(1)";
+    });
   </script>
 
   <style>
