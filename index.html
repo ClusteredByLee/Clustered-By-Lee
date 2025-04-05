@@ -1,413 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clustered by Lee | Luxury Lash Enhancements</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <header>
-        <img id="siteLogo" src="" alt="">
-    </header>
-
-    <script>
-        // Fetch the saved logo from localStorage and display it
-        const savedLogo = localStorage.getItem("logo");
-        if (savedLogo) {
-            document.getElementById("siteLogo").src = savedLogo;
-        }
-    </script>
-
+    <title>Clustered by Lee</title>
     <style>
-        :root {
-            --black: #000000;
-            --white: #ffffff;
-            --gold: #D4AF37;
-            --spacing-md: 2rem;
-            --spacing-xl: 4rem;
-            --section-bg: #111111;
-        }
-
-        .promo-container {
-            display: flex; /* Align images in a row */
-            justify-content: center; /* Center the images */
-            gap: 15px; /* Space between images */
-            flex-wrap: wrap; /* Ensure responsiveness */
-        }
-
-        .promo-container img {
-            width: 300px; /* Set a fixed width */
-            height: 200px; /* Set a fixed height */
-            object-fit: cover; /* Ensure images maintain aspect ratio without distortion */
-            border-radius: 10px; /* Optional: rounded corners */
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional: shadow effect */
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Helvetica Neue', sans-serif;
-        }
-
         body {
-            background: var(--black);
-            color: var(--white);
-            line-height: 1.6;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff8f4;
         }
 
-        /* Nike-style Navigation */
-        .nav {
+        nav {
+            background-color: #f8c8dc;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 5%;
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(0,0,0,0.95);
-            backdrop-filter: blur(10px);
         }
 
         .nav-logo {
-            max-width: 150px;
-            transition: transform 0.3s;
+            height: 50px;
         }
 
         .text-logo {
-            font-size: 1.8rem;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: var(--white);
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: 500;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background: var(--gold);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 5%;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                        url('https://images.unsplash.com/photo-1601933470096-0e34634effc6') center/cover;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            line-height: 1.1;
-        }
-
-        .cta-button {
-            background: var(--gold);
-            color: var(--black);
-            padding: 1rem 3rem;
-            border: none;
-            border-radius: 30px;
-            font-weight: 700;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
-        }
-
-        /* Products Section */
-        .products-section {
-            padding: var(--spacing-xl) 5%;
-            background: var(--section-bg);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #d63384;
         }
 
         .section-title {
-            font-size: 2.5rem;
             text-align: center;
-            margin-bottom: var(--spacing-md);
+            margin: 2rem 0 1rem;
+            font-size: 2rem;
+            color: #d63384;
         }
 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        .product-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 0 2rem 2rem;
         }
 
         .product-card {
-            background: var(--black);
-            border-radius: 12px;
+            width: 200px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.2s;
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
+            transform: scale(1.05);
         }
 
         .product-image {
-            height: 350px;
+            width: 100%;
+            height: 200px;
             background-size: cover;
             background-position: center;
-            position: relative;
-        }
-
-        .new-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--gold);
-            color: var(--black);
-            padding: 0.25rem 1rem;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.9rem;
         }
 
         .product-info {
-            padding: 1.5rem;
+            padding: 0.75rem;
             text-align: center;
         }
 
         .product-price {
-            color: var(--gold);
-            font-weight: 700;
-            font-size: 1.25rem;
+            color: #d63384;
+            font-weight: bold;
         }
 
-        /* Promotional Section */
-        .promo-section {
-            padding: var(--spacing-xl) 5%;
-        }
-
-        .promo-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .promo-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 12px;
-            transition: transform 0.3s ease;
-        }
-
-        .promo-image:hover {
-            transform: scale(1.03);
-        }
-
-        /* Contact Modal */
-        .contact-section {
+        #contactSection {
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0,0,0,0.95);
+            transform: translate(-50%, -50%) scale(0);
+            background: #fff;
             padding: 2rem;
-            border-radius: 1rem;
-            display: none;
-            flex-direction: column;
-            gap: 1.5rem;
-            z-index: 1000;
-            border: 1px solid var(--gold);
-            backdrop-filter: blur(10px);
-            width: 90%;
-            max-width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: 0.3s ease-in-out;
         }
 
-        .contact-section.active {
-            display: flex;
-            animation: fadeIn 0.3s ease;
+        #contactSection.active {
+            transform: translate(-50%, -50%) scale(1);
         }
 
-        .contact-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            color: var(--gold);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .social-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .social-button {
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .tiktok-btn {
-            background: #000;
-            color: #fff;
-            border: 2px solid #69C9D0;
-        }
-
-        .whatsapp-btn {
-            background: #25D366;
-            color: #fff;
-        }
-
-        .overlay {
+        #overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.5);
+            z-index: 99;
             display: none;
-            z-index: 999;
         }
 
-        .overlay.active {
+        #overlay.active {
             display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translate(-50%, -45%); }
-            to { opacity: 1; transform: translate(-50%, -50%); }
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .promo-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .product-image {
-                height: 300px;
-            }
-
-            .promo-image {
-                height: 300px;
-            }
         }
     </style>
 </head>
+
 <body>
-    <nav class="nav">
+    <nav>
         <div id="logoContainer"></div>
-        <div class="nav-links">
-            <a href="#featured" class="nav-link">Home</a>
-            <a href="collections.html" class="nav-link">Collections</a>
-            <a href="#contact" class="nav-link">Contact</a>
-        </div>
+        <button onclick="openContact()">Contact</button>
     </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Precision Lash Architecture</h1>
-            <a href="collections.html" class="cta-button">Explore Collection</a>
-        </div>
-    </section>
+    <h2 class="section-title">Featured Designs</h2>
+    <div id="featuredGrid" class="product-grid"></div>
 
-    <section class="products-section" id="featured">
-        <h2 class="section-title">Featured Designs</h2>
-        <div class="products-grid" id="featuredGrid"></div>
-    </section>
-
-    <section class="promo-section">
-        <h2>Our Promotions</h2>
-        <div class="promo-container">
-            <img id="promo1Display" src="placeholder1.jpg" alt="Promo 1">
-            <img id="promo2Display" src="placeholder2.jpg" alt="Promo 2">
-            <img id="promo3Display" src="placeholder3.jpg" alt="Promo 3">
-        </div>
-    </section>
+    <h2 class="section-title">Our Promos</h2>
+    <div class="product-grid">
+        <img id="promo1Display" src="" width="200" height="200" style="border-radius: 10px; object-fit: cover;" />
+        <img id="promo2Display" src="" width="200" height="200" style="border-radius: 10px; object-fit: cover;" />
+        <img id="promo3Display" src="" width="200" height="200" style="border-radius: 10px; object-fit: cover;" />
+    </div>
 
     <!-- Contact Modal -->
-    <div class="overlay" id="overlay"></div>
-    <section class="contact-section" id="contactSection">
-        <button class="contact-close" onclick="closeContact()">&times;</button>
-        <h2>Connect With Us</h2>
-        <div class="social-buttons">
-            <a href="https://tiktok.com/@clusteredbylee" target="_blank" class="social-button tiktok-btn">
-                <i class="fab fa-tiktok"></i>
-                TikTok
-            </a>
-            <a href="https://wa.me/27660907961" target="_blank" class="social-button whatsapp-btn">
-                <i class="fab fa-whatsapp"></i>
-                WhatsApp
-            </a>
-        </div>
-    </section>
+    <div id="overlay"></div>
+    <div id="contactSection">
+        <h3>Contact Us</h3>
+        <p>WhatsApp: <a href="https://wa.me/yourNumber" target="_blank">Chat with us</a></p>
+        <button onclick="closeContact()">Close</button>
+    </div>
 
     <script>
-        // Load Dynamic Content
         document.addEventListener('DOMContentLoaded', () => {
             // Load Logo
             const logo = localStorage.getItem('siteLogo');
             const logoContainer = document.getElementById('logoContainer');
-            logoContainer.innerHTML = logo 
+            logoContainer.innerHTML = logo
                 ? `<img src="${logo}" alt="Logo" class="nav-logo">`
                 : '<span class="text-logo">Clustered by Lee</span>';
 
-            // Featured Products Section
+            // Featured Designs (Static)
             const featuredGrid = document.getElementById('featuredGrid');
             const featuredProducts = [
-                { title: 'Luxe Set', price: '$75', image: 'product1.jpg' },
-                { title: 'Volume Set', price: '$85', image: 'product2.jpg' },
-                { title: 'Classic Set', price: '$65', image: 'product3.jpg' }
+                { title: 'Luxe Set', price: '$75', image: '1.jpg' },
+                { title: 'Volume Set', price: '$85', image: '2.jpg' },
+                { title: 'Classic Set', price: '$65', image: '3.jpg' }
             ];
+
             featuredGrid.innerHTML = featuredProducts.map(product => `
                 <div class="product-card">
                     <div class="product-image" style="background-image: url('${product.image}')"></div>
@@ -417,18 +159,36 @@
                     </div>
                 </div>
             `).join('');
+
+            // Promo Image Rotation
+            const promoImages = ['R70.JPG', 'R140.JPG', 'R150.JPG', 'R200.JPG', 'R280.JPG', 'R300.JPG'];
+            const promoElements = [
+                document.getElementById('promo1Display'),
+                document.getElementById('promo2Display'),
+                document.getElementById('promo3Display')
+            ];
+
+            function rotatePromos() {
+                promoElements.forEach(img => {
+                    const randomImage = promoImages[Math.floor(Math.random() * promoImages.length)];
+                    img.src = randomImage;
+                });
+            }
+
+            rotatePromos();
+            setInterval(rotatePromos, 4000); // Every 4 seconds
         });
 
-        // Toggle Contact Modal
-        const openContact = () => {
+        function openContact() {
             document.getElementById('contactSection').classList.add('active');
             document.getElementById('overlay').classList.add('active');
         }
 
-        const closeContact = () => {
+        function closeContact() {
             document.getElementById('contactSection').classList.remove('active');
             document.getElementById('overlay').classList.remove('active');
         }
     </script>
 </body>
+
 </html>
