@@ -137,15 +137,49 @@
         </div>
     </section>
 
-    <!-- Admin Section to Manage Products -->
-  
+    <!-- Product Data and Display Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const products = JSON.parse(localStorage.getItem('products')) || [];
+            const products = [
+                {
+                    name: "Single Cluster Lashes",
+                    image: "R70.jpg",
+                    price: "R70"
+                },
+                {
+                    name: "Single by 2 Cluster Lashes",
+                    image: "R140.jpg",
+                    price: "R140"
+                },
+                {
+                    name: "Cluster lashes (3 different sizes), Eyelash brush, makeup brush, miniature smudge brush",
+                    image: "R150.jpg",
+                    price: "R150"
+                },
+                {
+                    name: "Cluster lashes (3 different sizes), Eyelash brush, makeup brush, miniature smudge brush, Tweezers",
+                    image: "R200.jpg",
+                    price: "R200"
+                },
+                {
+                    name: "Cluster lashes (3 different sizes), Eyelash brush, eye pads, makeup brush, miniature smudge brush, Tweezers, 3 glue rings",
+                    image: "R250.jpg",
+                    price: "R250"
+                },
+                {
+                    name: "Cluster lashes (9 to 15 or 8 to 16), Eyelash brush, makeup brush, miniature smudge brush",
+                    image: "R280.jpg",
+                    price: "R280"
+                },
+                {
+                    name: "Cluster lashes (9 to 15 or 8 to 16), Eyelash brush, makeup brush, miniature smudge brush, tweezers",
+                    image: "R300.jpg",
+                    price: "R300"
+                }
+            ];
 
             const productGrid = document.getElementById('productGrid');
 
-            // Function to render products
             function renderProducts() {
                 productGrid.innerHTML = '';
                 products.forEach(product => {
@@ -163,7 +197,6 @@
                     productGrid.appendChild(productCard);
                 });
             }
-
 
             renderProducts();
         });
