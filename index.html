@@ -4,65 +4,58 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Clustered by Lee | Luxury Lash Enhancements</title>
-  <meta name="description" content="Clustered by Lee — clustered lashes, glam bundles, and kits. Order via WhatsApp with delivery options."/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <meta name="description" content="Clustered by Lee — precision lash architecture, premium clustered sets, and curated kits. Order on WhatsApp."/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
   <style>
     :root{
-      /* Pink, soft, girly palette */
-      --bg:#fff7fb;            /* blush background */
-      --panel:#ffffff;
-      --text:#231f20;
-      --muted:#6b7280;
-      --border:#f6d8ea;
-      --accent:#ec4899;        /* pink */
-      --accent-700:#db2777;
-      --accent-soft:#fde7f2;   /* very light pink background */
-      --accent-soft-2:#fff0f7;
-      --success:#22c55e;
-
-      --radius:14px;
-      --shadow:0 14px 44px rgba(236,72,153,.18);
-      --shadow-2:0 16px 60px rgba(236,72,153,.28);
+      --black:#0a0a0a;
+      --black-2:#0f0f10;
+      --panel:#111214;
+      --white:#ffffff;
+      --muted:#9aa0a6;
+      --border:#1f2024;
+      --gold:#D4AF37;
+      --gold-2:#b68d17;
+      --shadow:0 12px 40px rgba(0,0,0,.5);
+      --radius:12px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0;background:linear-gradient(180deg,var(--bg), #ffffff);
-      color:var(--text);
-      font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica Neue, Arial;
+      margin:0;background:var(--black);color:var(--white);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial;
     }
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
-    .container{width:min(1200px,calc(100% - 2rem));margin:0 auto}
 
-    /* Header */
+    .container{width:min(1200px, calc(100% - 2rem));margin:0 auto}
+
+    /* Header / Nav */
     .header{
-      position:sticky;top:0;z-index:50;
-      background:rgba(255,255,255,.85);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--border);
+      position:sticky;top:0;z-index:50;background:rgba(10,10,10,.9);backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(212,175,55,.18);
     }
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0}
-    .brand{display:flex;align-items:center;gap:.6rem;font-weight:900;letter-spacing:.02em}
-    .brand .logo{width:36px;height:36px;border-radius:10px;object-fit:cover;box-shadow:var(--shadow)}
-    .brand .name{font-size:1.1rem;color:var(--accent-700);text-transform:uppercase;letter-spacing:.12em}
-    .nav-links{display:flex;align-items:center;gap:.4rem}
-    .nav-link{padding:.55rem .85rem;border-radius:.7rem;color:#6b7280;font-weight:700}
-    .nav-link:hover,.nav-link.active{background:var(--accent-soft);color:#a31257}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem 0}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
+    .brand img{width:36px;height:36px;border-radius:8px;object-fit:cover;transition:transform .2s}
+    .brand img:hover{transform:scale(1.06)}
+    .text-logo{font-size:1.1rem}
+    .nav-links{display:flex;align-items:center;gap:.6rem}
+    .nav-link{padding:.55rem .85rem;border-radius:.6rem;color:#d9d9d9}
+    .nav-link:hover,.nav-link.active{background:rgba(255,255,255,.06);color:#fff}
     .btn{
-      display:inline-flex;align-items:center;gap:.5rem;
-      padding:.6rem .9rem;border-radius:.8rem;border:1px solid var(--accent);
-      background:linear-gradient(180deg,var(--accent), var(--accent-700));color:#fff;
-      font-weight:900;letter-spacing:.02em;box-shadow:var(--shadow);
-      transition:transform .06s, filter .2s;
+      display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+      padding:.6rem .85rem;border-radius:.65rem;border:1px solid var(--gold);color:var(--black);
+      background:linear-gradient(180deg,var(--gold), var(--gold-2));font-weight:800;letter-spacing:.02em;
+      transition:transform .06s, filter .2s; box-shadow:0 8px 20px rgba(212,175,55,.2);
     }
     .btn:hover{filter:brightness(1.05)}
     .btn:active{transform:translateY(1px)}
     .btn-outline{
-      background:var(--accent-soft);color:#a31257;border-color:var(--accent);
+      background:transparent;color:var(--gold);border-color:var(--gold)
     }
-    .btn-outline:hover{background:#ffd8eb}
+    .btn-outline:hover{background:rgba(212,175,55,.08)}
     .btn-small{padding:.45rem .7rem;font-size:.9rem}
 
     /* Pages */
@@ -71,117 +64,102 @@
 
     /* Hero */
     .hero{
-      position:relative;overflow:hidden;border-bottom:1px solid var(--border);
+      position:relative;min-height:75vh;display:grid;place-items:center;
       background:
-        radial-gradient(1200px 400px at 10% -10%, #ffe3f2 0%, transparent 60%),
-        radial-gradient(900px 400px at 90% 0%, #ffd2ec 0%, transparent 60%),
-        linear-gradient(180deg,#ffffff, var(--accent-soft-2) 70%);
+        linear-gradient(180deg, rgba(10,10,10,.4), rgba(10,10,10,.85)),
+        url('https://images.unsplash.com/photo-1601933470096-0e34634effc6?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;background-position:center;border-bottom:1px solid var(--border);
     }
-    .hero-inner{
-      display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center;padding:3rem 0;
-    }
-    .hero h1{margin:0;font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.06}
-    .hero p{color:var(--muted);margin:.6rem 0 1rem;font-size:1.05rem}
-    .cta{display:flex;gap:.6rem;flex-wrap:wrap}
-    .hero-visual{
-      border-radius:18px;border:1px solid var(--border);box-shadow:var(--shadow-2);
-      overflow:hidden;background:#fff
-    }
-    .hero-visual img{width:100%;height:100%;object-fit:cover}
+    .hero-inner{padding:6rem 0;text-align:center}
+    .hero h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.05;margin:0;text-transform:uppercase;letter-spacing:.08em}
+    .hero p{color:#d1d5db;margin:.75rem auto 1.25rem;max-width:60ch}
+    .cta-row{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
 
     /* Sections */
     .section{padding:2rem 0}
-    .section h2{margin:.25rem 0;font-size:1.35rem}
+    .section h2{margin:.25rem 0;font-size:1.35rem;letter-spacing:.02em;text-transform:uppercase;color:#f5f5f5}
     .muted{color:var(--muted)}
 
-    /* Grid / Cards */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
+    /* Grids / Cards */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
     .card{
-      background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
-      box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;
+      background:linear-gradient(180deg,var(--panel), var(--black-2));border:1px solid var(--border);
+      border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;
       transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
     }
-    .card:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(236,72,153,.28);border-color:#ffcfe8}
+    .card:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(0,0,0,.6);border-color:#2a2b30}
     .card img{aspect-ratio:4/3;object-fit:cover}
     .card-body{padding:1rem}
-    .card h3{margin:0 0 .4rem}
-    .price{font-weight:900;color:#9d174d}
-    .price-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
-    .compare{color:#9ca3af;text-decoration:line-through;margin-left:.35rem;font-weight:600}
-    .save{color:var(--success);font-weight:900;font-size:.9rem;margin-left:.35rem}
-    .small{font-size:.9rem;color:var(--muted)}
+    .card h3{margin:0 0 .35rem;font-size:1.05rem}
+    .price{font-weight:900;color:var(--gold)}
+    .small{font-size:.9rem;color:#c7c7c7}
     .card-actions{display:flex;gap:.5rem;padding:1rem;border-top:1px solid var(--border)}
-    .pill{background:#ffeaf4;color:#a31257;font-weight:800;padding:.25rem .55rem;border-radius:999px;font-size:.75rem;display:inline-block}
+    .pill{background:rgba(212,175,55,.15);color:#f3e6b0;font-weight:700;padding:.2rem .5rem;border-radius:999px;font-size:.75rem;display:inline-block}
 
     /* Promo strip */
     .promo-strip{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;margin-top:1rem}
     .promo-strip a img{
-      width:300px;height:180px;object-fit:cover;border-radius:12px;border:1px solid var(--border);
-      box-shadow:var(--shadow);transition:transform .2s ease, box-shadow .2s ease
+      width:300px;height:180px;object-fit:cover;border-radius:10px;border:1px solid var(--border);box-shadow:0 10px 26px rgba(0,0,0,.35);
+      transition:transform .2s ease, box-shadow .2s ease
     }
-    .promo-strip a img:hover{transform:translateY(-2px);box-shadow:0 20px 50px rgba(236,72,153,.28)}
+    .promo-strip a img:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(0,0,0,.5)}
 
-    /* Contact panel */
+    /* About/Contact panel */
     .contact-panel{
-      background:#fff;border:1px solid var(--border);border-radius:var(--radius);
-      padding:1rem;box-shadow:var(--shadow)
+      background:linear-gradient(180deg,var(--panel), var(--black-2));
+      border:1px solid var(--border);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow);
     }
-    .footer{border-top:1px solid var(--border);padding:1.25rem 0;color:var(--muted);font-size:.95rem}
+
+    /* Footer */
+    .footer{border-top:1px solid var(--border);padding:1.25rem 0;color:#c8c8c8;font-size:.95rem}
     .social{display:flex;gap:24px;justify-content:center;margin-top:.6rem}
-    .social a{color:#a31257;font-size:1.5rem}
-    .social a:hover{color:#7a0e40}
+    .social a{color:#e5e5e5;font-size:1.5rem}
+    .social a:hover{color:var(--gold)}
 
     /* Modal */
     .modal-backdrop{
-      position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:1rem;z-index:60
+      position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;padding:1rem;z-index:60
     }
     .modal-backdrop.active{display:flex}
     .modal{
-      width:min(600px, 100%);background:#fff;border-radius:18px;border:1px solid var(--border);
-      box-shadow:0 40px 120px rgba(236,72,153,.3);overflow:hidden;color:var(--text)
+      width:min(560px, 100%);background:linear-gradient(180deg,var(--panel), #0e0f12);
+      border-radius:14px;border:1px solid var(--border);box-shadow:0 40px 120px rgba(0,0,0,.6);overflow:hidden;color:#f1f1f1
     }
     .modal header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1rem .75rem;border-bottom:1px solid var(--border)}
-    .modal h3{margin:0;font-size:1.25rem;color:#7a0e40}
-    .modal .close{background:transparent;border:0;font-size:1.25rem;line-height:1;cursor:pointer;color:#a31257}
+    .modal h3{margin:0;font-size:1.2rem;color:#fff}
+    .modal .close{background:transparent;border:0;font-size:1.25rem;line-height:1;cursor:pointer;color:#e5e5e5}
     .modal .content{padding:1rem;display:grid;gap:.8rem}
     .form-row{display:grid;gap:.35rem}
-    .form-row label{font-weight:800;font-size:.95rem}
+    .form-row label{font-weight:800;font-size:.95rem;color:#eaeaea}
     .form-row select,.form-row input,.form-row textarea{
-      width:100%;padding:.6rem .7rem;border-radius:.7rem;border:1px solid #f5cfe0;background:#fff;color:var(--text);outline:none
+      width:100%;padding:.6rem .7rem;border-radius:.6rem;border:1px solid #2b2d33;background:#0b0c10;color:#f3f3f3;outline:none
     }
     .form-row select:focus,.form-row input:focus,.form-row textarea:focus{
-      border-color:#f59abf;box-shadow:0 0 0 3px rgba(245,154,191,.25)
+      border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.18)
     }
-    .delivery-row{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
-    .chip{
-      display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);background:#fff;border-radius:999px;padding:.4rem .65rem;font-weight:700;cursor:pointer
-    }
-    .chip input{accent-color:#ec4899}
-    .calc{
-      border-top:1px dashed var(--border);padding-top:.75rem;display:flex;flex-direction:column;gap:.3rem
-    }
-    .calc .line{display:flex;align-items:center;justify-content:space-between}
-    .total{font-weight:900;color:#7a0e40}
     .modal footer{display:flex;gap:.5rem;justify-content:flex-end;padding:1rem;border-top:1px solid var(--border);background:transparent}
 
     @media (max-width: 900px){
-      .hero-inner{grid-template-columns:1fr;padding:1.6rem 0}
-      .nav-links .btn{display:none}
+      .hero{min-height:60vh}
+      .promo-strip a img{width:100%;max-width:460px;height:160px}
+      .nav-links .btn{display:none} /* keep header compact on mobile */
     }
   </style>
 </head>
 <body>
   <header class="header">
     <div class="container nav">
-      <a href="#/" class="brand" aria-label="Clustered by Lee — Home">
-        <img id="logoImg" class="logo" alt="Clustered by Lee logo">
-        <span class="name">Clustered by Lee</span>
+      <a href="#/" class="brand" aria-label="Clustered by Lee — home">
+        <span id="logoContainer">
+          <!-- JS will inject logo from localStorage or CL.JPG, fallback to text -->
+          <span class="text-logo">Clustered by Lee</span>
+        </span>
       </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#/" class="nav-link">Home</a>
-        <a href="#/shop" class="nav-link">Shop</a>
+        <a href="#/shop" class="nav-link">Collections</a>
         <a href="#contact" class="nav-link">Contact</a>
-        <a href="https://wa.me/27660907961" target="_blank" rel="noopener" class="btn btn-small">
+        <a href="https://wa.me/27660907961" target="_blank" rel="noopener" class="btn btn-small" id="quickWhatsApp">
           <i class="fa-brands fa-whatsapp"></i> WhatsApp
         </a>
       </nav>
@@ -193,16 +171,11 @@
     <section id="page-home" class="page active" role="region" aria-labelledby="home-title">
       <section class="hero">
         <div class="container hero-inner">
-          <div>
-            <h1 id="home-title">Pretty. Wispy. Effortless glam.</h1>
-            <p>Handcrafted clustered lashes by Lee — soft wispy sets, glam bundles, and easy ordering on WhatsApp with delivery.</p>
-            <div class="cta">
-              <a href="#/shop" class="btn">Shop the Collection</a>
-              <a href="#contact" class="btn btn-outline">Contact</a>
-            </div>
-          </div>
-          <div class="hero-visual">
-            <img alt="Soft beauty shot showcasing lashes" src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=1600&auto=format&fit=crop"/>
+          <h1 id="home-title">Precision Lash Architecture</h1>
+          <p>Handcrafted clustered sets, curated by Lee. Lightweight fibres, luxe finish. Order directly on WhatsApp.</p>
+          <div class="cta-row">
+            <a href="#/shop" class="btn">Explore Collection</a>
+            <a href="#contact" class="btn btn-outline">Contact</a>
           </div>
         </div>
       </section>
@@ -210,7 +183,7 @@
       <section class="section">
         <div class="container">
           <h2>Featured Designs</h2>
-          <p class="muted">Faves from Clustered by Lee — tap to order via WhatsApp.</p>
+          <p class="muted">Our most-loved lash sets from Clustered by Lee.</p>
           <div class="grid" id="featuredGrid"></div>
 
           <div class="promo-strip" aria-label="Promotions">
@@ -225,13 +198,8 @@
     <!-- Shop -->
     <section id="page-shop" class="page" role="region" aria-labelledby="shop-title">
       <div class="container section">
-        <h2 id="shop-title">Shop & Bundles</h2>
-        <p class="muted">Choose a product or bundle, then add 3–5 day delivery (+R50) if you want. Total updates instantly.</p>
-
-        <h3 style="margin:.5rem 0 0">Bundles & Cart Deals</h3>
-        <div class="grid" id="deals-grid" style="margin-bottom:1rem"></div>
-
-        <h3 style="margin:1rem 0 0">Lash Sets</h3>
+        <h2 id="shop-title">Shop the Collection</h2>
+        <p class="muted">Select a product to choose curl, length, and quantity — then order via WhatsApp.</p>
         <div class="grid" id="shop-grid"></div>
       </div>
     </section>
@@ -241,13 +209,12 @@
   <footer class="footer" id="contact">
     <div class="container">
       <div class="contact-panel">
-        <h3 style="margin-top:0;color:#7a0e40">Contact</h3>
+        <h3 style="margin-top:0">Contact</h3>
         <p class="muted">
           WhatsApp orders welcome. For wholesale or custom sets, message “Wholesale pack list”.
         </p>
         <p>
-          <strong>WhatsApp:</strong>
-          <a href="https://wa.me/27660907961" target="_blank" rel="noopener" style="color:#a31257">+27 66 090 7961</a>
+          <strong>WhatsApp:</strong> <a href="https://wa.me/27660907961" target="_blank" rel="noopener" style="color:var(--gold)">+27 66 090 7961</a>
         </p>
         <div class="social" aria-label="Social links">
           <a href="https://tiktok.com/@clusteredbylee" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
@@ -258,7 +225,7 @@
     </div>
   </footer>
 
-  <!-- Modal -->
+  <!-- Product Modal -->
   <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <header>
@@ -268,23 +235,21 @@
       <div class="content" id="modalContent"></div>
       <footer>
         <button class="btn btn-outline" id="modalCancel">Cancel</button>
-        <button class="btn" id="modalOrder"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
+        <button class="btn" id="modalOrder">Order on WhatsApp</button>
       </footer>
     </div>
   </div>
 
   <script>
-    // Settings
+    // WhatsApp number (already set to yours)
     const WHATSAPP_NUMBER = '27660907961';
     const CURRENCY_SYMBOL = 'R';
-    const SHIPPING_PRICE = 50;
-    const SHIPPING_LABEL = '3–5 day delivery';
-
     const formatPrice = (n) => `${CURRENCY_SYMBOL}${n.toFixed(2)}`;
 
-    // Router
+    // Simple SPA router
     const routes = ['/', '/shop'];
     const routeToPageId = { '/':'page-home', '/shop':'page-shop' };
+
     function getRouteFromHash(){
       const raw = location.hash.replace('#','').trim();
       if(!raw || raw === '/') return '/';
@@ -294,8 +259,10 @@
     function showPage(route){
       Object.values(routeToPageId).forEach(id => document.getElementById(id)?.classList.remove('active'));
       document.getElementById(routeToPageId[route])?.classList.add('active');
-      const titles = {'/':'Home','/shop':'Shop'};
+      const titles = {'/':'Home','/shop':'Collections'};
       document.title = `Clustered by Lee — ${titles[route] || 'Home'}`;
+
+      // Nav active state
       document.querySelectorAll('.nav-link').forEach(a=>{
         const isActive = a.getAttribute('href') === '#' + route || (a.getAttribute('href') === '#/' && route === '/');
         a.classList.toggle('active', isActive);
@@ -305,103 +272,58 @@
     }
     window.addEventListener('hashchange', ()=>showPage(getRouteFromHash()));
 
-    // Catalog
+    // Products (merged with your featured images and inferred promo prices)
+    // Adjust names/descriptions/prices as needed.
     const products = [
       {
         id:'large-set',
         name:'Large Set',
-        price:150.00,
+        price:150.00, // from R150 promo
         image:'11.jpg',
-        badges:['Glam','Full'],
-        description:'Bold fullness for statement glam.',
+        badges:['Full','Glam'],
+        description:'Bold, full clusters for dramatic looks.',
         options:{ curl:['C','D'], length:[14,16,18,20] }
       },
       {
         id:'medium-set',
         name:'Medium Set',
-        price:140.00,
+        price:140.00, // from R140 promo
         image:'12.jpg',
         badges:['Balanced','Everyday'],
-        description:'Lifted definition with soft finish.',
+        description:'Lifted definition with a softer finish.',
         options:{ curl:['C','D'], length:[12,14,16,18] }
       },
       {
         id:'classic-set',
         name:'Classic Set',
-        price:70.00,
+        price:70.00, // from R70 promo
         image:'13.jpg',
-        badges:['Natural','Lightweight'],
-        description:'Clean, classic lash line for daily wear.',
+        badges:['Natural','Starter'],
+        description:'Lightweight clusters for a clean, classic lash line.',
         options:{ curl:['C'], length:[10,12,14,16] }
       }
     ];
 
-    // Deals (Cart Deals)
-    const deals = [
-      {
-        id:'bundle-1',
-        name:'Mini Glam Bundle #1',
-        price:460.00,
-        compareAt:null,
-        image:'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop',
-        badges:['Bundle','Best value'],
-        description:'Curated glam picks for a quick glow-up.'
-      },
-      {
-        id:'bundle-2',
-        name:'Mini Glam Bundle #2',
-        price:860.00,
-        compareAt:null,
-        image:'https://images.unsplash.com/photo-1512207765276-47add8fd3101?q=80&w=1200&auto=format&fit=crop',
-        badges:['Bundle','Popular'],
-        description:'Step up the volume with extra sets.'
-      },
-      {
-        id:'bundle-3',
-        name:'Glam Bundle #3 — Special',
-        price:1160.00,          // Special price
-        compareAt:1260.00,      // Was R1260
-        image:'https://images.unsplash.com/photo-1535242208474-9a2793260ca0?q=80&w=1200&auto=format&fit=crop',
-        badges:['Bundle','Special'],
-        description:'Multi-set glam. Limited-time special.'
-      },
-      {
-        id:'bundle-4',
-        name:'Glam Bundle #4 — Special',
-        price:1300.00,          // Special R1300
-        compareAt:1300.00,      // Was R1300 (same as special per your note)
-        image:'https://images.unsplash.com/photo-1522335789203-9ed94b5f27aa?q=80&w=1200&auto=format&fit=crop',
-        badges:['Bundle'],
-        description:'Ultimate glam bundle.'
-      }
-    ];
-
-    // Render helpers
-    function renderCards(targetId, items){
+    // Render product cards
+    function renderProducts(targetId, items){
       const el = document.getElementById(targetId);
       el.innerHTML = '';
       items.forEach(p=>{
-        const hasDiscount = typeof p.compareAt === 'number' && p.compareAt > p.price;
-        const saveAmt = hasDiscount ? (p.compareAt - p.price) : 0;
-
         const card = document.createElement('article');
         card.className = 'card';
         card.innerHTML = `
-          <img src="${p.image}" alt="${p.name}">
+          <img src="${p.image}" alt="${p.name} product photo">
           <div class="card-body">
             <h3>${p.name}</h3>
-            <div class="price-row">
-              <div>
-                <span class="price">${formatPrice(p.price)}</span>
-                ${hasDiscount ? `<span class="compare">${formatPrice(p.compareAt)}</span><span class="save">Save ${formatPrice(saveAmt)}</span>` : ''}
-              </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:.5rem">
+              <span class="price">${formatPrice(p.price)}</span>
               <div style="display:flex;gap:.35rem;flex-wrap:wrap">${(p.badges||[]).map(b=>`<span class="pill">${b}</span>`).join('')}</div>
             </div>
-            ${p.description ? `<p class="small" style="margin-top:.4rem">${p.description}</p>` : ''}
+            <p class="small" style="margin-top:.35rem">${p.description}</p>
           </div>
           <div class="card-actions">
             <button class="btn btn-outline" data-id="${p.id}" data-action="view">Select options</button>
-            <button class="btn" data-id="${p.id}" data-action="order"><i class="fa-brands fa-whatsapp"></i> Order</button>
+            <button class="btn" data-id="${p.id}" data-action="order"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
           </div>
         `;
         el.appendChild(card);
@@ -411,108 +333,69 @@
         btn.addEventListener('click',(e)=>{
           const id = e.currentTarget.getAttribute('data-id');
           const action = e.currentTarget.getAttribute('data-action');
-          const item = [...products, ...deals].find(x=>x.id===id);
-          if(!item) return;
-          if(action === 'view'){ openModalForItem(item); }
-          else if(action === 'order'){ openModalForItem(item, { quick:true }); }
+          if(action === 'view'){ openProductModal(id); }
+          else if(action === 'order'){ openProductModal(id, { quick:true }); }
         });
       });
     }
 
-    // Featured uses first 3 products (your images 11/12/13)
+    // Featured = first 3 products (your 11/12/13 images)
     function renderFeatured(){
-      renderCards('featuredGrid', products.slice(0,3));
+      renderProducts('featuredGrid', products.slice(0,3));
     }
 
-    // Modal logic
+    // Modal state
     const modalBackdrop = document.getElementById('modalBackdrop');
     const modalContent  = document.getElementById('modalContent');
     const modalClose    = document.getElementById('modalClose');
     const modalCancel   = document.getElementById('modalCancel');
     const modalOrder    = document.getElementById('modalOrder');
+    let currentProduct  = null;
+    let quickMode       = false;
 
-    let currentItem = null;
-    let quickMode = false;
-
-    function openModalForItem(item, opts = {}){
-      currentItem = item;
+    function openProductModal(productId, opts = {}){
+      currentProduct = products.find(p=>p.id===productId);
       quickMode = !!opts.quick;
+      if(!currentProduct) return;
 
-      document.getElementById('modalTitle').textContent = currentItem.name;
+      document.getElementById('modalTitle').textContent = currentProduct.name;
 
-      // Build options (if product has options; bundles typically don't)
-      const optsMap = currentItem.options || {};
+      // Build options
+      const fields = [];
+      const optsMap = currentProduct.options || {};
       const labelMap = { curl:'Curl', length:'Length (mm)', variant:'Variant' };
-      const optionFields = Object.keys(optsMap).map(key=>{
+
+      Object.keys(optsMap).forEach(key=>{
         const values = optsMap[key];
         const options = values.map(v=>`<option value="${v}">${v}</option>`).join('');
-        return `
+        fields.push(`
           <div class="form-row">
             <label for="opt_${key}">${labelMap[key] || key}</label>
             <select id="opt_${key}" name="${key}">
               ${options}
             </select>
           </div>
-        `;
-      }).join('');
+        `);
+      });
 
       modalContent.innerHTML = `
         <div class="form-row">
           <div class="small">Price</div>
-          <div class="price">${formatPrice(currentItem.price)} <span class="small">per item</span></div>
+          <div class="price">${formatPrice(currentProduct.price)} <span class="small">per set</span></div>
         </div>
-
-        ${optionFields}
-
+        ${fields.join('')}
         <div class="form-row">
           <label for="opt_qty">Quantity</label>
           <input id="opt_qty" type="number" min="1" step="1" value="1">
         </div>
-
-        <div class="form-row">
-          <label>Delivery</label>
-          <div class="delivery-row">
-            <label class="chip">
-              <input type="radio" name="delivery" value="none" checked> Pickup / arrange later (R0)
-            </label>
-            <label class="chip">
-              <input type="radio" name="delivery" value="express"> ${SHIPPING_LABEL} (+${formatPrice(SHIPPING_PRICE)})
-            </label>
-          </div>
-        </div>
-
         <div class="form-row">
           <label for="opt_notes">Notes (optional)</label>
-          <textarea id="opt_notes" rows="3" placeholder="E.g., prefer D curl, please include extra 14mm"></textarea>
-        </div>
-
-        <div class="calc">
-          <div class="line"><span>Items subtotal</span><strong id="calcSubtotal">${formatPrice(currentItem.price)}</strong></div>
-          <div class="line"><span>Delivery</span><strong id="calcShipping">${formatPrice(0)}</strong></div>
-          <div class="line total"><span>Total</span><strong id="calcTotal">${formatPrice(currentItem.price)}</strong></div>
+          <textarea id="opt_notes" rows="3" placeholder="E.g., please include extra 14mm clusters"></textarea>
         </div>
       `;
 
-      // Events for live total updates
-      modalContent.querySelector('#opt_qty').addEventListener('input', updateTotals);
-      modalContent.querySelectorAll('input[name="delivery"]').forEach(r => r.addEventListener('change', updateTotals));
-      updateTotals();
-
       showModal();
       if(quickMode){ setTimeout(()=>modalOrder.focus(), 30); }
-    }
-
-    function updateTotals(){
-      if(!currentItem) return;
-      const qty = Math.max(1, parseInt(document.getElementById('opt_qty')?.value || '1', 10));
-      const delivery = [...modalContent.querySelectorAll('input[name="delivery"]')].find(r=>r.checked)?.value || 'none';
-      const shipping = delivery === 'express' ? SHIPPING_PRICE : 0; // flat per order
-      const subtotal = currentItem.price * qty;
-      const total = subtotal + shipping;
-
-      document.getElementById('calcSubtotal').textContent = formatPrice(subtotal);
-      document.getElementById('calcShipping').textContent = formatPrice(shipping);
-      document.getElementById('calcTotal').textContent = formatPrice(total);
     }
 
     function showModal(){
@@ -524,7 +407,7 @@
       modalBackdrop.classList.remove('active');
       modalBackdrop.setAttribute('aria-hidden','true');
       document.body.style.overflow = '';
-      currentItem = null;
+      currentProduct = null;
       quickMode = false;
     }
     modalClose.addEventListener('click', closeModal);
@@ -532,32 +415,26 @@
     modalBackdrop.addEventListener('click', (e)=>{ if(e.target === modalBackdrop) closeModal(); });
     document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && modalBackdrop.classList.contains('active')) closeModal(); });
 
+    // WhatsApp order flow
     function orderOnWhatsApp(){
-      if(!currentItem) return;
+      if(!currentProduct) return;
 
-      const optsMap = currentItem.options || {};
+      const optsMap = currentProduct.options || {};
       const selections = [];
       Object.keys(optsMap).forEach(key=>{
-        const el = document.getElementById('opt_'+key);
+        const el = document.getElementById('opt_' + key);
         if(el){ selections.push(`${(key[0].toUpperCase()+key.slice(1))}: ${el.value}`); }
       });
 
       const qty = Math.max(1, parseInt(document.getElementById('opt_qty')?.value || '1', 10));
       const notes = (document.getElementById('opt_notes')?.value || '').trim();
-      const delivery = [...modalContent.querySelectorAll('input[name="delivery"]')].find(r=>r.checked)?.value || 'none';
-      const shipping = delivery === 'express' ? SHIPPING_PRICE : 0;
-      const subtotal = currentItem.price * qty;
-      const total = subtotal + shipping;
-
-      const deliveryText = delivery === 'express' ? `${SHIPPING_LABEL} (+${formatPrice(SHIPPING_PRICE)})` : 'Pickup / arrange later (R0)';
+      const total = currentProduct.price * qty;
 
       const lines = [
         'Hi Clustered by Lee 👋 I’d like to order:',
-        `• Item: ${currentItem.name}`,
+        `• Product: ${currentProduct.name}`,
         selections.length ? `• Options: ${selections.join(', ')}` : '',
         `• Quantity: ${qty}`,
-        `• Subtotal: ${formatPrice(subtotal)}`,
-        `• Delivery: ${deliveryText}`,
         `• Total: ${formatPrice(total)}`,
         notes ? `• Notes: ${notes}` : '',
         '',
@@ -571,26 +448,41 @@
     }
     modalOrder.addEventListener('click', orderOnWhatsApp);
 
-    // Logo load: CL.JPG if present, else text fallback
-    function loadLogo(){
-      const imgEl = document.getElementById('logoImg');
-      const saved = localStorage.getItem('siteLogo'); // optional dataURL or path
-      if(saved){ imgEl.src = saved; return; }
-      const probe = new Image();
-      probe.onload = ()=>{ imgEl.src = 'CL.JPG'; };
-      probe.onerror = ()=>{ imgEl.remove(); };
-      probe.src = 'CL.JPG';
+    // Header WhatsApp quick link
+    const quickBtn = document.getElementById('quickWhatsApp');
+    quickBtn.addEventListener('click', (e)=>{
+      // allow default but could add preset text if desired
+    });
+
+    // Logo injection: load from localStorage or fallback to CL.JPG or text
+    function injectLogo(){
+      const logoContainer = document.getElementById('logoContainer');
+      const saved = localStorage.getItem('siteLogo'); // path or data URL
+      if(saved){
+        logoContainer.innerHTML = `<img src="${saved}" alt="Clustered by Lee logo"> <span class="text-logo">Clustered by Lee</span>`;
+        return;
+      }
+      // Try CL.JPG, fallback to text if not found
+      const testImg = new Image();
+      testImg.onload = ()=>{
+        logoContainer.innerHTML = `<img src="CL.JPG" alt="Clustered by Lee logo"> <span class="text-logo">Clustered by Lee</span>`;
+      };
+      testImg.onerror = ()=>{
+        logoContainer.innerHTML = `<span class="text-logo">Clustered by Lee</span>`;
+      };
+      testImg.src = 'CL.JPG';
     }
 
     // Init
     window.addEventListener('DOMContentLoaded', ()=>{
+      injectLogo();
       document.getElementById('year').textContent = new Date().getFullYear();
-      loadLogo();
 
-      renderCards('shop-grid', products);
-      renderCards('deals-grid', deals);
+      // Render sections
+      renderProducts('shop-grid', products);
       renderFeatured();
 
+      // Router init
       if(!location.hash){ location.hash = '#/'; } else { showPage(getRouteFromHash()); }
     });
   </script>
