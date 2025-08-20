@@ -86,7 +86,7 @@
       border-radius:18px;border:1px solid var(--border);box-shadow:var(--shadow-2);
       overflow:hidden;background:#fff
     }
-    .hero-visual img{width:100%;height:100%;object-fit:cover}
+    .hero-visual img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s ease}
 
     /* Sections */
     .section{padding:2rem 0}
@@ -108,9 +108,16 @@
     .price-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
     .compare{color:#9ca3af;text-decoration:line-through;margin-left:.35rem;font-weight:600}
     .save{color:var(--success);font-weight:900;font-size:.9rem;margin-left:.35rem}
-    .small{font-size:.9rem;color:var(--muted)}
+    .small{font-size:.9rem;color:#6b7280}
     .card-actions{display:flex;gap:.5rem;padding:1rem;border-top:1px solid var(--border)}
     .pill{background:#ffeaf4;color:#a31257;font-weight:800;padding:.25rem .55rem;border-radius:999px;font-size:.75rem;display:inline-block}
+
+    /* Bundle card tweaks: make image smaller */
+    .bundle-card img.bundle-thumb{
+      height:180px; /* smaller visual */
+      aspect-ratio:auto; /* override default */
+      object-fit:cover;
+    }
 
     /* Promo strip */
     .promo-strip{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;margin-top:1rem}
@@ -201,8 +208,8 @@
             </div>
           </div>
           <div class="hero-visual">
-            <!-- Using your own image instead of a stock photo -->
-            <img alt="Clustered by Lee featured set" src="12.jpg"/>
+            <!-- Randomize from your local images; fades in on load -->
+            <img id="heroImage" alt="Clustered by Lee featured set"/>
           </div>
         </div>
       </section>
@@ -226,7 +233,7 @@
     <section id="page-shop" class="page" role="region" aria-labelledby="shop-title">
       <div class="container section">
         <h2 id="shop-title">Shop & Bundles</h2>
-        <p class="muted">Bundles include Standard delivery (7–9 business days) at no extra cost. Upgrade to Express (3–5 business days) for +R50.</p>
+        <p class="muted">Bundles include Standard delivery (7–9 business days). Upgrade to Express (3–5 business days) for +R50.</p>
 
         <h3 style="margin:.5rem 0 0">Bundles & Cart Deals</h3>
         <div class="grid" id="deals-grid" style="margin-bottom:1rem"></div>
@@ -306,6 +313,26 @@
     }
     window.addEventListener('hashchange', ()=>showPage(getRouteFromHash()));
 
+    // Random hero image (from your local images)
+    function setRandomHero(){
+      const hero = document.getElementById('heroImage');
+      const candidates = ['12.jpg','11.jpg','13.jpg','3.jpg','2.jpg','CL.JPG','cl.jpg'];
+      // shuffle
+      for(let i=candidates.length-1;i>0;i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
+      }
+      let chosen = candidates[0];
+      const test = new Image();
+      test.onload = ()=>{ hero.src = chosen; hero.style.opacity = 1; };
+      test.onerror = ()=>{
+        // fallback to 12.jpg
+        hero.src = '12.jpg';
+        hero.style.opacity = 1;
+      };
+      test.src = chosen;
+    }
+
     // Lash Sets
     const products = [
       {
@@ -337,17 +364,17 @@
       }
     ];
 
-    // Bundles (single card + price list)
+    // Bundles (single card + price list) — image smaller via CSS and one image only
     const bundleGroup = {
       id: 'bundles',
       name: 'Cart Deals — Bundles',
-      image: 'bundles.jpg', // Use your single image with the price list
+      image: 'bundle.jpg', // single image (smaller via CSS)
       description: 'All bundles include Standard delivery (7–9 business days). Upgrade to Express for +R50.',
       variants: [
-        { id:'bundle-1', label:'Mini Glam Bundle #1', price:460.00 },
-        { id:'bundle-2', label:'Mini Glam Bundle #2', price:860.00 },
-        { id:'bundle-3', label:'Glam Bundle #3 — Special', price:1160.00, compareAt:1260.00 },
-        { id:'bundle-4', label:'Glam Bundle #4 — Special', price:1300.00, compareAt:1300.00 }
+        { id:'bundle-1', label:'#1 MINI GLAM BUNDLE — 10 TRAYS', price:460.00 },
+        { id:'bundle-2', label:'#2 GLOW UP BUNDLE — 20 TRAYS',  price:860.00 },
+        { id:'bundle-3', label:'#3 LASH BOSS SET — 30 TRAYS',   price:1160.00, compareAt:1260.00 },
+        { id:'bundle-4', label:'#4 ULTIMATE GLAM SET — 40 TRAYS', price:1300.00, compareAt:1500.00 } // Special
       ]
     };
 
@@ -395,6 +422,8 @@
 
       const p = bundleGroup;
       const fromPrice = Math.min(...p.variants.map(v=>v.price));
+      const hasAnyDiscount = p.variants.some(v => typeof v.compareAt === 'number' && v.compareAt > v.price);
+
       const listHtml = p.variants.map(v=>{
         const hasDiscount = typeof v.compareAt === 'number' && v.compareAt > v.price;
         const saveAmt = hasDiscount ? (v.compareAt - v.price) : 0;
@@ -410,14 +439,18 @@
       }).join('');
 
       const card = document.createElement('article');
-      card.className = 'card';
+      card.className = 'card bundle-card';
       card.innerHTML = `
-        <img src="${p.image}" alt="Bundles price list">
+        <img class="bundle-thumb" id="bundleThumb" src="${p.image}" alt="Bundles price list">
         <div class="card-body">
           <h3>${p.name}</h3>
           <div class="price-row">
             <div><span class="price">From ${formatPrice(fromPrice)}</span></div>
-            <div style="display:flex;gap:.35rem;flex-wrap:wrap"><span class="pill">Includes Standard delivery</span><span class="pill">Upgrade to Express +R50</span></div>
+            <div style="display:flex;gap:.35rem;flex-wrap:wrap">
+              <span class="pill">Includes Standard delivery</span>
+              <span class="pill">Upgrade to Express +R50</span>
+              ${hasAnyDiscount ? `<span class="pill">Special</span>` : ''}
+            </div>
           </div>
           <p class="small" style="margin:.4rem 0">${p.description}</p>
           <ul style="list-style:none;padding:0;display:grid;gap:.35rem;margin:.5rem 0 0">
@@ -430,6 +463,13 @@
         </div>
       `;
       el.appendChild(card);
+
+      // Fallback to bundles.jpg if bundle.jpg isn't found
+      const img = card.querySelector('#bundleThumb');
+      const test = new Image();
+      test.onload = ()=>{}; // bundle.jpg exists
+      test.onerror = ()=>{ img.src = 'bundles.jpg'; };
+      test.src = p.image;
 
       card.querySelectorAll('button').forEach(btn=>{
         btn.addEventListener('click',(e)=>{
@@ -554,16 +594,13 @@
 
       if(isBundle){
         modalContent.querySelector('#opt_variant').addEventListener('change', ()=>{
-          // Update unit price text when bundle changes
           const v = getSelectedVariant(currentItem);
           document.getElementById('unitPrice').innerHTML = `${formatPrice(v.price)} <span class="small">${unitLabel}</span>`;
           updateTotals();
         });
       }
 
-      // Initial calc
       updateTotals();
-
       showModal();
       if(quickMode){ setTimeout(()=>modalOrder.focus(), 30); }
     }
@@ -624,7 +661,6 @@
         titleLine = `• Product: ${currentItem.name}`;
       }
 
-      // Options for lash sets
       const selections = [];
       if(!isBundle){
         const optsMap = currentItem.options || {};
@@ -679,6 +715,7 @@
     window.addEventListener('DOMContentLoaded', ()=>{
       document.getElementById('year').textContent = new Date().getFullYear();
       loadLogo();
+      setRandomHero();
 
       renderCards('shop-grid', products);
       renderBundlesCard();
