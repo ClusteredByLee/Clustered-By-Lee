@@ -4,58 +4,64 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Clustered by Lee | Luxury Lash Enhancements</title>
-  <meta name="description" content="Clustered by Lee — precision lash architecture, premium clustered sets, and curated kits. Order on WhatsApp."/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <meta name="description" content="Clustered by Lee — clustered lashes, glam bundles, and kits. Order via WhatsApp with delivery options."/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
     :root{
-      --black:#0a0a0a;
-      --black-2:#0f0f10;
-      --panel:#111214;
-      --white:#ffffff;
-      --muted:#9aa0a6;
-      --border:#1f2024;
-      --gold:#D4AF37;
-      --gold-2:#b68d17;
-      --shadow:0 12px 40px rgba(0,0,0,.5);
-      --radius:12px;
+      --bg:#fff7fb;
+      --panel:#ffffff;
+      --text:#231f20;
+      --muted:#6b7280;
+      --border:#f6d8ea;
+      --accent:#ec4899;
+      --accent-700:#db2777;
+      --accent-soft:#fde7f2;
+      --accent-soft-2:#fff0f7;
+      --success:#22c55e;
+
+      --radius:14px;
+      --shadow:0 14px 44px rgba(236,72,153,.18);
+      --shadow-2:0 16px 60px rgba(236,72,153,.28);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0;background:var(--black);color:var(--white);
-      font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial;
+      margin:0;background:linear-gradient(180deg,var(--bg), #ffffff);
+      color:var(--text);
+      font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica Neue, Arial;
     }
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
+    .container{width:min(1200px,calc(100% - 2rem));margin:0 auto}
 
-    .container{width:min(1200px, calc(100% - 2rem));margin:0 auto}
-
-    /* Header / Nav */
+    /* Header */
     .header{
-      position:sticky;top:0;z-index:50;background:rgba(10,10,10,.9);backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(212,175,55,.18);
+      position:sticky;top:0;z-index:50;
+      background:rgba(255,255,255,.85);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--border);
     }
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem 0}
-    .brand{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
-    .brand img{width:36px;height:36px;border-radius:8px;object-fit:cover;transition:transform .2s}
-    .brand img:hover{transform:scale(1.06)}
-    .text-logo{font-size:1.1rem}
-    .nav-links{display:flex;align-items:center;gap:.6rem}
-    .nav-link{padding:.55rem .85rem;border-radius:.6rem;color:#d9d9d9}
-    .nav-link:hover,.nav-link.active{background:rgba(255,255,255,.06);color:#fff}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:900;letter-spacing:.02em}
+    .brand .logo{width:36px;height:36px;border-radius:10px;object-fit:cover;box-shadow:var(--shadow)}
+    .brand .name{font-size:1.1rem;color:var(--accent-700);text-transform:uppercase;letter-spacing:.12em}
+    .nav-links{display:flex;align-items:center;gap:.4rem}
+    .nav-link{padding:.55rem .85rem;border-radius:.7rem;color:#6b7280;font-weight:700}
+    .nav-link:hover,.nav-link.active{background:var(--accent-soft);color:#a31257}
     .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
-      padding:.6rem .85rem;border-radius:.65rem;border:1px solid var(--gold);color:var(--black);
-      background:linear-gradient(180deg,var(--gold), var(--gold-2));font-weight:800;letter-spacing:.02em;
-      transition:transform .06s, filter .2s; box-shadow:0 8px 20px rgba(212,175,55,.2);
+      display:inline-flex;align-items:center;gap:.5rem;
+      padding:.6rem .9rem;border-radius:.8rem;border:1px solid var(--accent);
+      background:linear-gradient(180deg,var(--accent), var(--accent-700));color:#fff;
+      font-weight:900;letter-spacing:.02em;box-shadow:var(--shadow);
+      transition:transform .06s, filter .2s;
     }
     .btn:hover{filter:brightness(1.05)}
     .btn:active{transform:translateY(1px)}
     .btn-outline{
-      background:transparent;color:var(--gold);border-color:var(--gold)
+      background:var(--accent-soft);color:#a31257;border-color:var(--accent);
     }
-    .btn-outline:hover{background:rgba(212,175,55,.08)}
+    .btn-outline:hover{background:#ffd8eb}
     .btn-small{padding:.45rem .7rem;font-size:.9rem}
 
     /* Pages */
@@ -64,102 +70,117 @@
 
     /* Hero */
     .hero{
-      position:relative;min-height:75vh;display:grid;place-items:center;
+      position:relative;overflow:hidden;border-bottom:1px solid var(--border);
       background:
-        linear-gradient(180deg, rgba(10,10,10,.4), rgba(10,10,10,.85)),
-        url('https://images.unsplash.com/photo-1601933470096-0e34634effc6?q=80&w=1600&auto=format&fit=crop');
-      background-size:cover;background-position:center;border-bottom:1px solid var(--border);
+        radial-gradient(1200px 400px at 10% -10%, #ffe3f2 0%, transparent 60%),
+        radial-gradient(900px 400px at 90% 0%, #ffd2ec 0%, transparent 60%),
+        linear-gradient(180deg,#ffffff, var(--accent-soft-2) 70%);
     }
-    .hero-inner{padding:6rem 0;text-align:center}
-    .hero h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.05;margin:0;text-transform:uppercase;letter-spacing:.08em}
-    .hero p{color:#d1d5db;margin:.75rem auto 1.25rem;max-width:60ch}
-    .cta-row{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
+    .hero-inner{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center;padding:3rem 0;
+    }
+    .hero h1{margin:0;font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.06}
+    .hero p{color:var(--muted);margin:.6rem 0 1rem;font-size:1.05rem}
+    .cta{display:flex;gap:.6rem;flex-wrap:wrap}
+    .hero-visual{
+      border-radius:18px;border:1px solid var(--border);box-shadow:var(--shadow-2);
+      overflow:hidden;background:#fff
+    }
+    .hero-visual img{width:100%;height:100%;object-fit:cover}
 
     /* Sections */
     .section{padding:2rem 0}
-    .section h2{margin:.25rem 0;font-size:1.35rem;letter-spacing:.02em;text-transform:uppercase;color:#f5f5f5}
+    .section h2{margin:.25rem 0;font-size:1.35rem}
     .muted{color:var(--muted)}
 
-    /* Grids / Cards */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+    /* Grid / Cards */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
     .card{
-      background:linear-gradient(180deg,var(--panel), var(--black-2));border:1px solid var(--border);
-      border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;
+      background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+      box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;
       transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
     }
-    .card:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(0,0,0,.6);border-color:#2a2b30}
+    .card:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(236,72,153,.28);border-color:#ffcfe8}
     .card img{aspect-ratio:4/3;object-fit:cover}
     .card-body{padding:1rem}
-    .card h3{margin:0 0 .35rem;font-size:1.05rem}
-    .price{font-weight:900;color:var(--gold)}
-    .small{font-size:.9rem;color:#c7c7c7}
+    .card h3{margin:0 0 .4rem}
+    .price{font-weight:900;color:#9d174d}
+    .price-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+    .compare{color:#9ca3af;text-decoration:line-through;margin-left:.35rem;font-weight:600}
+    .save{color:var(--success);font-weight:900;font-size:.9rem;margin-left:.35rem}
+    .small{font-size:.9rem;color:var(--muted)}
     .card-actions{display:flex;gap:.5rem;padding:1rem;border-top:1px solid var(--border)}
-    .pill{background:rgba(212,175,55,.15);color:#f3e6b0;font-weight:700;padding:.2rem .5rem;border-radius:999px;font-size:.75rem;display:inline-block}
+    .pill{background:#ffeaf4;color:#a31257;font-weight:800;padding:.25rem .55rem;border-radius:999px;font-size:.75rem;display:inline-block}
 
     /* Promo strip */
     .promo-strip{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;margin-top:1rem}
     .promo-strip a img{
-      width:300px;height:180px;object-fit:cover;border-radius:10px;border:1px solid var(--border);box-shadow:0 10px 26px rgba(0,0,0,.35);
-      transition:transform .2s ease, box-shadow .2s ease
+      width:300px;height:180px;object-fit:cover;border-radius:12px;border:1px solid var(--border);
+      box-shadow:var(--shadow);transition:transform .2s ease, box-shadow .2s ease
     }
-    .promo-strip a img:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(0,0,0,.5)}
+    .promo-strip a img:hover{transform:translateY(-2px);box-shadow:0 20px 50px rgba(236,72,153,.28)}
 
-    /* About/Contact panel */
+    /* Contact panel */
     .contact-panel{
-      background:linear-gradient(180deg,var(--panel), var(--black-2));
-      border:1px solid var(--border);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow);
+      background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+      padding:1rem;box-shadow:var(--shadow)
     }
-
-    /* Footer */
-    .footer{border-top:1px solid var(--border);padding:1.25rem 0;color:#c8c8c8;font-size:.95rem}
+    .footer{border-top:1px solid var(--border);padding:1.25rem 0;color:var(--muted);font-size:.95rem}
     .social{display:flex;gap:24px;justify-content:center;margin-top:.6rem}
-    .social a{color:#e5e5e5;font-size:1.5rem}
-    .social a:hover{color:var(--gold)}
+    .social a{color:#a31257;font-size:1.5rem}
+    .social a:hover{color:#7a0e40}
 
     /* Modal */
     .modal-backdrop{
-      position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;padding:1rem;z-index:60
+      position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:1rem;z-index:60
     }
     .modal-backdrop.active{display:flex}
     .modal{
-      width:min(560px, 100%);background:linear-gradient(180deg,var(--panel), #0e0f12);
-      border-radius:14px;border:1px solid var(--border);box-shadow:0 40px 120px rgba(0,0,0,.6);overflow:hidden;color:#f1f1f1
+      width:min(600px, 100%);background:#fff;border-radius:18px;border:1px solid var(--border);
+      box-shadow:0 40px 120px rgba(236,72,153,.3);overflow:hidden;color:var(--text)
     }
     .modal header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1rem .75rem;border-bottom:1px solid var(--border)}
-    .modal h3{margin:0;font-size:1.2rem;color:#fff}
-    .modal .close{background:transparent;border:0;font-size:1.25rem;line-height:1;cursor:pointer;color:#e5e5e5}
+    .modal h3{margin:0;font-size:1.25rem;color:#7a0e40}
+    .modal .close{background:transparent;border:0;font-size:1.25rem;line-height:1;cursor:pointer;color:#a31257}
     .modal .content{padding:1rem;display:grid;gap:.8rem}
     .form-row{display:grid;gap:.35rem}
-    .form-row label{font-weight:800;font-size:.95rem;color:#eaeaea}
+    .form-row label{font-weight:800;font-size:.95rem}
     .form-row select,.form-row input,.form-row textarea{
-      width:100%;padding:.6rem .7rem;border-radius:.6rem;border:1px solid #2b2d33;background:#0b0c10;color:#f3f3f3;outline:none
+      width:100%;padding:.6rem .7rem;border-radius:.7rem;border:1px solid #f5cfe0;background:#fff;color:var(--text);outline:none
     }
     .form-row select:focus,.form-row input:focus,.form-row textarea:focus{
-      border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.18)
+      border-color:#f59abf;box-shadow:0 0 0 3px rgba(245,154,191,.25)
     }
+    .delivery-row{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+    .chip{
+      display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);background:#fff;border-radius:999px;padding:.4rem .65rem;font-weight:700;cursor:pointer
+    }
+    .chip input{accent-color:#ec4899}
+    .calc{
+      border-top:1px dashed var(--border);padding-top:.75rem;display:flex;flex-direction:column;gap:.3rem
+    }
+    .calc .line{display:flex;align-items:center;justify-content:space-between}
+    .total{font-weight:900;color:#7a0e40}
     .modal footer{display:flex;gap:.5rem;justify-content:flex-end;padding:1rem;border-top:1px solid var(--border);background:transparent}
 
     @media (max-width: 900px){
-      .hero{min-height:60vh}
-      .promo-strip a img{width:100%;max-width:460px;height:160px}
-      .nav-links .btn{display:none} /* keep header compact on mobile */
+      .hero-inner{grid-template-columns:1fr;padding:1.6rem 0}
+      .nav-links .btn{display:none}
     }
   </style>
 </head>
 <body>
   <header class="header">
     <div class="container nav">
-      <a href="#/" class="brand" aria-label="Clustered by Lee — home">
-        <span id="logoContainer">
-          <!-- JS will inject logo from localStorage or CL.JPG, fallback to text -->
-          <span class="text-logo">Clustered by Lee</span>
-        </span>
+      <a href="#/" class="brand" aria-label="Clustered by Lee — Home">
+        <img id="logoImg" class="logo" alt="Clustered by Lee logo">
+        <span class="name">Clustered by Lee</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#/" class="nav-link">Home</a>
-        <a href="#/shop" class="nav-link">Collections</a>
+        <a href="#/shop" class="nav-link">Shop</a>
         <a href="#contact" class="nav-link">Contact</a>
-        <a href="https://wa.me/27660907961" target="_blank" rel="noopener" class="btn btn-small" id="quickWhatsApp">
+        <a href="https://wa.me/27660907961" target="_blank" rel="noopener" class="btn btn-small">
           <i class="fa-brands fa-whatsapp"></i> WhatsApp
         </a>
       </nav>
@@ -171,11 +192,17 @@
     <section id="page-home" class="page active" role="region" aria-labelledby="home-title">
       <section class="hero">
         <div class="container hero-inner">
-          <h1 id="home-title">Precision Lash Architecture</h1>
-          <p>Handcrafted clustered sets, curated by Lee. Lightweight fibres, luxe finish. Order directly on WhatsApp.</p>
-          <div class="cta-row">
-            <a href="#/shop" class="btn">Explore Collection</a>
-            <a href="#contact" class="btn btn-outline">Contact</a>
+          <div>
+            <h1 id="home-title">Pretty. Wispy. Effortless glam.</h1>
+            <p>Handcrafted clustered lashes by Lee — soft wispy sets, glam bundles, and easy ordering on WhatsApp with delivery.</p>
+            <div class="cta">
+              <a href="#/shop" class="btn">Shop the Collection</a>
+              <a href="#contact" class="btn btn-outline">Contact</a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <!-- Using your own image instead of a stock photo -->
+            <img alt="Clustered by Lee featured set" src="12.jpg"/>
           </div>
         </div>
       </section>
@@ -183,7 +210,7 @@
       <section class="section">
         <div class="container">
           <h2>Featured Designs</h2>
-          <p class="muted">Our most-loved lash sets from Clustered by Lee.</p>
+          <p class="muted">Faves from Clustered by Lee — tap to order via WhatsApp.</p>
           <div class="grid" id="featuredGrid"></div>
 
           <div class="promo-strip" aria-label="Promotions">
@@ -198,8 +225,13 @@
     <!-- Shop -->
     <section id="page-shop" class="page" role="region" aria-labelledby="shop-title">
       <div class="container section">
-        <h2 id="shop-title">Shop the Collection</h2>
-        <p class="muted">Select a product to choose curl, length, and quantity — then order via WhatsApp.</p>
+        <h2 id="shop-title">Shop & Bundles</h2>
+        <p class="muted">Bundles include Standard delivery (7–9 business days) at no extra cost. Upgrade to Express (3–5 business days) for +R50.</p>
+
+        <h3 style="margin:.5rem 0 0">Bundles & Cart Deals</h3>
+        <div class="grid" id="deals-grid" style="margin-bottom:1rem"></div>
+
+        <h3 style="margin:1rem 0 0">Lash Sets</h3>
         <div class="grid" id="shop-grid"></div>
       </div>
     </section>
@@ -209,12 +241,13 @@
   <footer class="footer" id="contact">
     <div class="container">
       <div class="contact-panel">
-        <h3 style="margin-top:0">Contact</h3>
+        <h3 style="margin-top:0;color:#7a0e40">Contact</h3>
         <p class="muted">
           WhatsApp orders welcome. For wholesale or custom sets, message “Wholesale pack list”.
         </p>
         <p>
-          <strong>WhatsApp:</strong> <a href="https://wa.me/27660907961" target="_blank" rel="noopener" style="color:var(--gold)">+27 66 090 7961</a>
+          <strong>WhatsApp:</strong>
+          <a href="https://wa.me/27660907961" target="_blank" rel="noopener" style="color:#a31257">+27 66 090 7961</a>
         </p>
         <div class="social" aria-label="Social links">
           <a href="https://tiktok.com/@clusteredbylee" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
@@ -225,7 +258,7 @@
     </div>
   </footer>
 
-  <!-- Product Modal -->
+  <!-- Modal -->
   <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <header>
@@ -235,21 +268,24 @@
       <div class="content" id="modalContent"></div>
       <footer>
         <button class="btn btn-outline" id="modalCancel">Cancel</button>
-        <button class="btn" id="modalOrder">Order on WhatsApp</button>
+        <button class="btn" id="modalOrder"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
       </footer>
     </div>
   </div>
 
   <script>
-    // WhatsApp number (already set to yours)
+    // Settings
     const WHATSAPP_NUMBER = '27660907961';
     const CURRENCY_SYMBOL = 'R';
+    const SHIPPING_PRICE = 50;
+    const STANDARD_LABEL = 'Standard 7–9 business days';
+    const EXPRESS_LABEL  = 'Express 3–5 business days';
+
     const formatPrice = (n) => `${CURRENCY_SYMBOL}${n.toFixed(2)}`;
 
-    // Simple SPA router
+    // Router
     const routes = ['/', '/shop'];
     const routeToPageId = { '/':'page-home', '/shop':'page-shop' };
-
     function getRouteFromHash(){
       const raw = location.hash.replace('#','').trim();
       if(!raw || raw === '/') return '/';
@@ -259,10 +295,8 @@
     function showPage(route){
       Object.values(routeToPageId).forEach(id => document.getElementById(id)?.classList.remove('active'));
       document.getElementById(routeToPageId[route])?.classList.add('active');
-      const titles = {'/':'Home','/shop':'Collections'};
+      const titles = {'/':'Home','/shop':'Shop'};
       document.title = `Clustered by Lee — ${titles[route] || 'Home'}`;
-
-      // Nav active state
       document.querySelectorAll('.nav-link').forEach(a=>{
         const isActive = a.getAttribute('href') === '#' + route || (a.getAttribute('href') === '#/' && route === '/');
         a.classList.toggle('active', isActive);
@@ -272,58 +306,71 @@
     }
     window.addEventListener('hashchange', ()=>showPage(getRouteFromHash()));
 
-    // Products (merged with your featured images and inferred promo prices)
-    // Adjust names/descriptions/prices as needed.
+    // Lash Sets
     const products = [
       {
         id:'large-set',
         name:'Large Set',
-        price:150.00, // from R150 promo
+        price:150.00,
         image:'11.jpg',
-        badges:['Full','Glam'],
-        description:'Bold, full clusters for dramatic looks.',
+        badges:['Glam','Full'],
+        description:'Bold fullness for statement glam.',
         options:{ curl:['C','D'], length:[14,16,18,20] }
       },
       {
         id:'medium-set',
         name:'Medium Set',
-        price:140.00, // from R140 promo
+        price:140.00,
         image:'12.jpg',
         badges:['Balanced','Everyday'],
-        description:'Lifted definition with a softer finish.',
+        description:'Lifted definition with soft finish.',
         options:{ curl:['C','D'], length:[12,14,16,18] }
       },
       {
         id:'classic-set',
         name:'Classic Set',
-        price:70.00, // from R70 promo
+        price:70.00,
         image:'13.jpg',
-        badges:['Natural','Starter'],
-        description:'Lightweight clusters for a clean, classic lash line.',
+        badges:['Natural','Lightweight'],
+        description:'Clean, classic lash line for daily wear.',
         options:{ curl:['C'], length:[10,12,14,16] }
       }
     ];
 
-    // Render product cards
-    function renderProducts(targetId, items){
+    // Bundles (single card + price list)
+    const bundleGroup = {
+      id: 'bundles',
+      name: 'Cart Deals — Bundles',
+      image: 'bundles.jpg', // Use your single image with the price list
+      description: 'All bundles include Standard delivery (7–9 business days). Upgrade to Express for +R50.',
+      variants: [
+        { id:'bundle-1', label:'Mini Glam Bundle #1', price:460.00 },
+        { id:'bundle-2', label:'Mini Glam Bundle #2', price:860.00 },
+        { id:'bundle-3', label:'Glam Bundle #3 — Special', price:1160.00, compareAt:1260.00 },
+        { id:'bundle-4', label:'Glam Bundle #4 — Special', price:1300.00, compareAt:1300.00 }
+      ]
+    };
+
+    // Render: Lash sets
+    function renderCards(targetId, items){
       const el = document.getElementById(targetId);
       el.innerHTML = '';
       items.forEach(p=>{
         const card = document.createElement('article');
         card.className = 'card';
         card.innerHTML = `
-          <img src="${p.image}" alt="${p.name} product photo">
+          <img src="${p.image}" alt="${p.name}">
           <div class="card-body">
             <h3>${p.name}</h3>
-            <div style="display:flex;align-items:center;justify-content:space-between;gap:.5rem">
-              <span class="price">${formatPrice(p.price)}</span>
+            <div class="price-row">
+              <div><span class="price">${formatPrice(p.price)}</span></div>
               <div style="display:flex;gap:.35rem;flex-wrap:wrap">${(p.badges||[]).map(b=>`<span class="pill">${b}</span>`).join('')}</div>
             </div>
-            <p class="small" style="margin-top:.35rem">${p.description}</p>
+            ${p.description ? `<p class="small" style="margin-top:.4rem">${p.description}</p>` : ''}
           </div>
           <div class="card-actions">
             <button class="btn btn-outline" data-id="${p.id}" data-action="view">Select options</button>
-            <button class="btn" data-id="${p.id}" data-action="order"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</button>
+            <button class="btn" data-id="${p.id}" data-action="order"><i class="fa-brands fa-whatsapp"></i> Order</button>
           </div>
         `;
         el.appendChild(card);
@@ -333,69 +380,214 @@
         btn.addEventListener('click',(e)=>{
           const id = e.currentTarget.getAttribute('data-id');
           const action = e.currentTarget.getAttribute('data-action');
-          if(action === 'view'){ openProductModal(id); }
-          else if(action === 'order'){ openProductModal(id, { quick:true }); }
+          const item = products.find(x=>x.id===id);
+          if(!item) return;
+          if(action === 'view'){ openModalForItem(item); }
+          else if(action === 'order'){ openModalForItem(item, { quick:true }); }
         });
       });
     }
 
-    // Featured = first 3 products (your 11/12/13 images)
-    function renderFeatured(){
-      renderProducts('featuredGrid', products.slice(0,3));
+    // Render: Bundles single card
+    function renderBundlesCard(){
+      const el = document.getElementById('deals-grid');
+      el.innerHTML = '';
+
+      const p = bundleGroup;
+      const fromPrice = Math.min(...p.variants.map(v=>v.price));
+      const listHtml = p.variants.map(v=>{
+        const hasDiscount = typeof v.compareAt === 'number' && v.compareAt > v.price;
+        const saveAmt = hasDiscount ? (v.compareAt - v.price) : 0;
+        return `
+          <li style="display:flex;justify-content:space-between;align-items:center;gap:.5rem">
+            <span>${v.label}</span>
+            <span>
+              <strong class="price">${formatPrice(v.price)}</strong>
+              ${hasDiscount ? `<span class="compare">${formatPrice(v.compareAt)}</span><span class="save">Save ${formatPrice(saveAmt)}</span>` : ''}
+            </span>
+          </li>
+        `;
+      }).join('');
+
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${p.image}" alt="Bundles price list">
+        <div class="card-body">
+          <h3>${p.name}</h3>
+          <div class="price-row">
+            <div><span class="price">From ${formatPrice(fromPrice)}</span></div>
+            <div style="display:flex;gap:.35rem;flex-wrap:wrap"><span class="pill">Includes Standard delivery</span><span class="pill">Upgrade to Express +R50</span></div>
+          </div>
+          <p class="small" style="margin:.4rem 0">${p.description}</p>
+          <ul style="list-style:none;padding:0;display:grid;gap:.35rem;margin:.5rem 0 0">
+            ${listHtml}
+          </ul>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-outline" data-action="view">Select bundle</button>
+          <button class="btn" data-action="order"><i class="fa-brands fa-whatsapp"></i> Order</button>
+        </div>
+      `;
+      el.appendChild(card);
+
+      card.querySelectorAll('button').forEach(btn=>{
+        btn.addEventListener('click',(e)=>{
+          const action = e.currentTarget.getAttribute('data-action');
+          if(action === 'view'){ openModalForItem(bundleGroup); }
+          else if(action === 'order'){ openModalForItem(bundleGroup, { quick:true }); }
+        });
+      });
     }
 
-    // Modal state
+    // Featured uses first 3 products
+    function renderFeatured(){
+      renderCards('featuredGrid', products.slice(0,3));
+    }
+
+    // Modal logic
     const modalBackdrop = document.getElementById('modalBackdrop');
     const modalContent  = document.getElementById('modalContent');
     const modalClose    = document.getElementById('modalClose');
     const modalCancel   = document.getElementById('modalCancel');
     const modalOrder    = document.getElementById('modalOrder');
-    let currentProduct  = null;
-    let quickMode       = false;
 
-    function openProductModal(productId, opts = {}){
-      currentProduct = products.find(p=>p.id===productId);
+    let currentItem = null;
+    let quickMode = false;
+
+    function openModalForItem(item, opts = {}){
+      currentItem = item;
       quickMode = !!opts.quick;
-      if(!currentProduct) return;
 
-      document.getElementById('modalTitle').textContent = currentProduct.name;
+      const isBundle = Array.isArray(currentItem.variants);
+      document.getElementById('modalTitle').textContent = currentItem.name;
 
-      // Build options
-      const fields = [];
-      const optsMap = currentProduct.options || {};
-      const labelMap = { curl:'Curl', length:'Length (mm)', variant:'Variant' };
-
-      Object.keys(optsMap).forEach(key=>{
-        const values = optsMap[key];
-        const options = values.map(v=>`<option value="${v}">${v}</option>`).join('');
-        fields.push(`
+      // Build options for sets (curl/length) or bundle selection
+      let optionFields = '';
+      if(isBundle){
+        const options = currentItem.variants.map(v=>{
+          const flag = (typeof v.compareAt === 'number' && v.compareAt > v.price) ? ' (Special)' : '';
+          return `<option value="${v.id}">${v.label}${flag} — ${formatPrice(v.price)}</option>`;
+        }).join('');
+        optionFields += `
           <div class="form-row">
-            <label for="opt_${key}">${labelMap[key] || key}</label>
-            <select id="opt_${key}" name="${key}">
-              ${options}
-            </select>
+            <label for="opt_variant">Select bundle</label>
+            <select id="opt_variant" name="bundle">${options}</select>
           </div>
-        `);
-      });
+        `;
+      }else{
+        const optsMap = currentItem.options || {};
+        const labelMap = { curl:'Curl', length:'Length (mm)', variant:'Variant' };
+        optionFields += Object.keys(optsMap).map(key=>{
+          const values = optsMap[key];
+          const options = values.map(v=>`<option value="${v}">${v}</option>`).join('');
+          return `
+            <div class="form-row">
+              <label for="opt_${key}">${labelMap[key] || key}</label>
+              <select id="opt_${key}" name="${key}">
+                ${options}
+              </select>
+            </div>
+          `;
+        }).join('');
+      }
+
+      const unitLabel = isBundle ? 'per bundle' : 'per set';
+      const unitPrice = isBundle ? getSelectedVariant(currentItem)?.price : currentItem.price;
+
+      // Delivery options
+      const deliveryFields = isBundle
+        ? `
+          <label class="chip">
+            <input type="radio" name="delivery" value="standard" checked> ${STANDARD_LABEL} (Included)
+          </label>
+          <label class="chip">
+            <input type="radio" name="delivery" value="express"> ${EXPRESS_LABEL} (+${formatPrice(SHIPPING_PRICE)})
+          </label>
+        `
+        : `
+          <label class="chip">
+            <input type="radio" name="delivery" value="none" checked> Pickup / arrange later (R0)
+          </label>
+          <label class="chip">
+            <input type="radio" name="delivery" value="express"> ${EXPRESS_LABEL} (+${formatPrice(SHIPPING_PRICE)})
+          </label>
+        `;
 
       modalContent.innerHTML = `
         <div class="form-row">
           <div class="small">Price</div>
-          <div class="price">${formatPrice(currentProduct.price)} <span class="small">per set</span></div>
+          <div class="price" id="unitPrice">${formatPrice(unitPrice)} <span class="small">${unitLabel}</span></div>
         </div>
-        ${fields.join('')}
+
+        ${optionFields}
+
         <div class="form-row">
           <label for="opt_qty">Quantity</label>
           <input id="opt_qty" type="number" min="1" step="1" value="1">
         </div>
+
+        <div class="form-row">
+          <label>Delivery</label>
+          <div class="delivery-row">
+            ${deliveryFields}
+          </div>
+        </div>
+
         <div class="form-row">
           <label for="opt_notes">Notes (optional)</label>
-          <textarea id="opt_notes" rows="3" placeholder="E.g., please include extra 14mm clusters"></textarea>
+          <textarea id="opt_notes" rows="3" placeholder="E.g., prefer D curl, please include extra 14mm"></textarea>
+        </div>
+
+        <div class="calc">
+          <div class="line"><span>Items subtotal</span><strong id="calcSubtotal">${formatPrice(unitPrice)}</strong></div>
+          <div class="line"><span>Delivery</span><strong id="calcShipping">${formatPrice(0)}</strong></div>
+          <div class="line total"><span>Total</span><strong id="calcTotal">${formatPrice(unitPrice)}</strong></div>
         </div>
       `;
 
+      // Events for live updates
+      const qtyEl = modalContent.querySelector('#opt_qty');
+      qtyEl.addEventListener('input', updateTotals);
+
+      modalContent.querySelectorAll('input[name="delivery"]').forEach(r => r.addEventListener('change', updateTotals));
+
+      if(isBundle){
+        modalContent.querySelector('#opt_variant').addEventListener('change', ()=>{
+          // Update unit price text when bundle changes
+          const v = getSelectedVariant(currentItem);
+          document.getElementById('unitPrice').innerHTML = `${formatPrice(v.price)} <span class="small">${unitLabel}</span>`;
+          updateTotals();
+        });
+      }
+
+      // Initial calc
+      updateTotals();
+
       showModal();
       if(quickMode){ setTimeout(()=>modalOrder.focus(), 30); }
+    }
+
+    function getSelectedVariant(item){
+      if(!item || !Array.isArray(item.variants)) return null;
+      const id = document.getElementById('opt_variant')?.value;
+      return item.variants.find(v=>v.id===id) || item.variants[0];
+    }
+
+    function updateTotals(){
+      if(!currentItem) return;
+      const isBundle = Array.isArray(currentItem.variants);
+      const qty = Math.max(1, parseInt(document.getElementById('opt_qty')?.value || '1', 10));
+      const deliveryVal = [...modalContent.querySelectorAll('input[name="delivery"]')].find(r=>r.checked)?.value || (isBundle ? 'standard' : 'none');
+      const shipping = deliveryVal === 'express' ? SHIPPING_PRICE : 0;
+
+      const unitPrice = isBundle ? getSelectedVariant(currentItem).price : currentItem.price;
+      const subtotal = unitPrice * qty;
+      const total = subtotal + shipping;
+
+      document.getElementById('calcSubtotal').textContent = formatPrice(subtotal);
+      document.getElementById('calcShipping').textContent = formatPrice(shipping);
+      document.getElementById('calcTotal').textContent = formatPrice(total);
     }
 
     function showModal(){
@@ -407,7 +599,7 @@
       modalBackdrop.classList.remove('active');
       modalBackdrop.setAttribute('aria-hidden','true');
       document.body.style.overflow = '';
-      currentProduct = null;
+      currentItem = null;
       quickMode = false;
     }
     modalClose.addEventListener('click', closeModal);
@@ -415,27 +607,51 @@
     modalBackdrop.addEventListener('click', (e)=>{ if(e.target === modalBackdrop) closeModal(); });
     document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && modalBackdrop.classList.contains('active')) closeModal(); });
 
-    // WhatsApp order flow
     function orderOnWhatsApp(){
-      if(!currentProduct) return;
+      if(!currentItem) return;
 
-      const optsMap = currentProduct.options || {};
-      const selections = [];
-      Object.keys(optsMap).forEach(key=>{
-        const el = document.getElementById('opt_' + key);
-        if(el){ selections.push(`${(key[0].toUpperCase()+key.slice(1))}: ${el.value}`); }
-      });
-
+      const isBundle = Array.isArray(currentItem.variants);
       const qty = Math.max(1, parseInt(document.getElementById('opt_qty')?.value || '1', 10));
       const notes = (document.getElementById('opt_notes')?.value || '').trim();
-      const total = currentProduct.price * qty;
+      const deliveryVal = [...modalContent.querySelectorAll('input[name="delivery"]')].find(r=>r.checked)?.value || (isBundle ? 'standard' : 'none');
+      const shipping = deliveryVal === 'express' ? SHIPPING_PRICE : 0;
+
+      let titleLine = '';
+      if(isBundle){
+        const v = getSelectedVariant(currentItem);
+        titleLine = `• Bundle: ${v.label}`;
+      }else{
+        titleLine = `• Product: ${currentItem.name}`;
+      }
+
+      // Options for lash sets
+      const selections = [];
+      if(!isBundle){
+        const optsMap = currentItem.options || {};
+        Object.keys(optsMap).forEach(key=>{
+          const el = document.getElementById('opt_' + key);
+          if(el){ selections.push(`${(key[0].toUpperCase()+key.slice(1))}: ${el.value}`); }
+        });
+      }
+
+      const unitPrice = isBundle ? getSelectedVariant(currentItem).price : currentItem.price;
+      const subtotal = unitPrice * qty;
+      const deliveryText = isBundle
+        ? (deliveryVal === 'express'
+            ? `${EXPRESS_LABEL} (+${formatPrice(SHIPPING_PRICE)})`
+            : `${STANDARD_LABEL} (Included)`)
+        : (deliveryVal === 'express'
+            ? `${EXPRESS_LABEL} (+${formatPrice(SHIPPING_PRICE)})`
+            : 'Pickup / arrange later (R0)');
 
       const lines = [
         'Hi Clustered by Lee 👋 I’d like to order:',
-        `• Product: ${currentProduct.name}`,
+        titleLine,
         selections.length ? `• Options: ${selections.join(', ')}` : '',
         `• Quantity: ${qty}`,
-        `• Total: ${formatPrice(total)}`,
+        `• Subtotal: ${formatPrice(subtotal)}`,
+        `• Delivery: ${deliveryText}`,
+        `• Total: ${formatPrice(subtotal + shipping)}`,
         notes ? `• Notes: ${notes}` : '',
         '',
         'Please let me know the next steps. Thank you!'
@@ -448,41 +664,26 @@
     }
     modalOrder.addEventListener('click', orderOnWhatsApp);
 
-    // Header WhatsApp quick link
-    const quickBtn = document.getElementById('quickWhatsApp');
-    quickBtn.addEventListener('click', (e)=>{
-      // allow default but could add preset text if desired
-    });
-
-    // Logo injection: load from localStorage or fallback to CL.JPG or text
-    function injectLogo(){
-      const logoContainer = document.getElementById('logoContainer');
-      const saved = localStorage.getItem('siteLogo'); // path or data URL
-      if(saved){
-        logoContainer.innerHTML = `<img src="${saved}" alt="Clustered by Lee logo"> <span class="text-logo">Clustered by Lee</span>`;
-        return;
-      }
-      // Try CL.JPG, fallback to text if not found
-      const testImg = new Image();
-      testImg.onload = ()=>{
-        logoContainer.innerHTML = `<img src="CL.JPG" alt="Clustered by Lee logo"> <span class="text-logo">Clustered by Lee</span>`;
-      };
-      testImg.onerror = ()=>{
-        logoContainer.innerHTML = `<span class="text-logo">Clustered by Lee</span>`;
-      };
-      testImg.src = 'CL.JPG';
+    // Logo load: CL.JPG if present, else text fallback
+    function loadLogo(){
+      const imgEl = document.getElementById('logoImg');
+      const saved = localStorage.getItem('siteLogo'); // optional dataURL or path
+      if(saved){ imgEl.src = saved; return; }
+      const probe = new Image();
+      probe.onload = ()=>{ imgEl.src = 'CL.JPG'; };
+      probe.onerror = ()=>{ imgEl.remove(); };
+      probe.src = 'CL.JPG';
     }
 
     // Init
     window.addEventListener('DOMContentLoaded', ()=>{
-      injectLogo();
       document.getElementById('year').textContent = new Date().getFullYear();
+      loadLogo();
 
-      // Render sections
-      renderProducts('shop-grid', products);
+      renderCards('shop-grid', products);
+      renderBundlesCard();
       renderFeatured();
 
-      // Router init
       if(!location.hash){ location.hash = '#/'; } else { showPage(getRouteFromHash()); }
     });
   </script>
